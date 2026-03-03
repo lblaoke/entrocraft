@@ -1,0 +1,77 @@
+{
+  "base": {
+    "label": "base",
+    "checkpoint": null,
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 433.9,
+        "mean_log_likelihood": -32.12272210121155,
+        "mean_log_osb": -368577.61484375,
+        "mean_log_likelihood_per_token": -0.07403254690299967,
+        "mean_log_osb_per_token": -849.4529035348007
+      }
+    }
+  },
+  "global_step_20": {
+    "label": "global_step_20",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_nsr_n8/global_step_20/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 629.5,
+        "mean_log_likelihood": -47.70957899093628,
+        "mean_log_osb": -535550.43125,
+        "mean_log_likelihood_per_token": -0.07578964097051037,
+        "mean_log_osb_per_token": -850.7552521842732
+      }
+    }
+  },
+  "global_step_40": {
+    "label": "global_step_40",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_nsr_n8/global_step_40/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 656.0,
+        "mean_log_likelihood": -82.38424110412598,
+        "mean_log_osb": -515850.034375,
+        "mean_log_likelihood_per_token": -0.12558573339043594,
+        "mean_log_osb_per_token": -786.3567597179878
+      }
+    }
+  },
+  "global_step_60": {
+    "label": "global_step_60",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_nsr_n8/global_step_60/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 671.6,
+        "mean_log_likelihood": -79.53581466674805,
+        "mean_log_osb": -514571.89296875,
+        "mean_log_likelihood_per_token": -0.11842735953952956,
+        "mean_log_osb_per_token": -766.1880478986748
+      }
+    }
+  },
+  "global_step_80": {
+    "label": "global_step_80",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_nsr_n8/global_step_80/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 571.3,
+        "mean_log_likelihood": -77.3622947692871,
+        "mean_log_osb": -424200.1578125,
+        "mean_log_likelihood_per_token": -0.13541448410517612,
+        "mean_log_osb_per_token": -742.5173425739542
+      }
+    }
+  }
+}

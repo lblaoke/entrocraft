@@ -1,0 +1,107 @@
+{
+  "base": {
+    "label": "base",
+    "checkpoint": null,
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 433.9,
+        "mean_log_likelihood": -32.12272210121155,
+        "mean_log_osb": -368577.61484375,
+        "mean_log_likelihood_per_token": -0.07403254690299967,
+        "mean_log_osb_per_token": -849.4529035348007
+      }
+    }
+  },
+  "global_step_100": {
+    "label": "global_step_100",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_raftpp_n8/global_step_100/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 549.5,
+        "mean_log_likelihood": -5.735850286483765,
+        "mean_log_osb": -720877.678125,
+        "mean_log_likelihood_per_token": -0.01043830807367382,
+        "mean_log_osb_per_token": -1311.8793050500456
+      }
+    }
+  },
+  "global_step_101": {
+    "label": "global_step_101",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_raftpp_n8/global_step_101/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 518.7,
+        "mean_log_likelihood": -4.1946625232696535,
+        "mean_log_osb": -682376.734375,
+        "mean_log_likelihood_per_token": -0.008086875888316277,
+        "mean_log_osb_per_token": -1315.551830296896
+      }
+    }
+  },
+  "global_step_20": {
+    "label": "global_step_20",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_raftpp_n8/global_step_20/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 509.0,
+        "mean_log_likelihood": -17.193781757354735,
+        "mean_log_osb": -564645.6432128906,
+        "mean_log_likelihood_per_token": -0.03377953193979319,
+        "mean_log_osb_per_token": -1109.3234640724766
+      }
+    }
+  },
+  "global_step_40": {
+    "label": "global_step_40",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_raftpp_n8/global_step_40/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 488.5,
+        "mean_log_likelihood": -9.85463650226593,
+        "mean_log_osb": -592985.5890625,
+        "mean_log_likelihood_per_token": -0.02017325793708481,
+        "mean_log_osb_per_token": -1213.8906633828046
+      }
+    }
+  },
+  "global_step_60": {
+    "label": "global_step_60",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_raftpp_n8/global_step_60/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 531.4,
+        "mean_log_likelihood": -7.484890389442444,
+        "mean_log_osb": -663888.6625,
+        "mean_log_likelihood_per_token": -0.014085228433275206,
+        "mean_log_osb_per_token": -1249.3200272864133
+      }
+    }
+  },
+  "global_step_80": {
+    "label": "global_step_80",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_raftpp_n8/global_step_80/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 587.3,
+        "mean_log_likelihood": -6.336709141731262,
+        "mean_log_osb": -760485.14375,
+        "mean_log_likelihood_per_token": -0.010789560942842266,
+        "mean_log_osb_per_token": -1294.883609313809
+      }
+    }
+  }
+}

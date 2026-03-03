@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=eval_output_space_baseline_grpo
+#SBATCH --job-name=eval_output_space_baseline_nsr
 #SBATCH --partition=ai
 #SBATCH --account=ruqiz
 #SBATCH --qos=preemptible
@@ -22,13 +22,13 @@ conda activate verl
 # Configuration  (edit these)
 # ---------------------------------------------------------------------------
 BASE_MODEL="Qwen/Qwen3-4B-Base"
-CHECKPOINT_ROOT="checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8"
+CHECKPOINT_ROOT="checkpoints/antifragile_rl/qwen3-4b-base_numina_math_nsr_n8"
 
 # Evaluation data
 DATA_ROOT="./data"
 DATA_PATHS="${DATA_ROOT}/math500/test.parquet"
 
-OUTPUT_DIR="./recipe/output_space_baseline/results"
+OUTPUT_DIR="./recipe/output_space_baseline/nsr_results"
 BATCH_SIZE=8
 MAX_PROMPT_LENGTH=1024
 MAX_NEW_TOKENS=3072

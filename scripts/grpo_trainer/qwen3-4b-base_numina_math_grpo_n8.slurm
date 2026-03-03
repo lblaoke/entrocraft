@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#SBATCH --job-name=qwen3-4b-base_numina_math_full_grpo_n8
+#SBATCH --job-name=qwen3-4b-base_numina_math_grpo_n8
 #SBATCH --partition=ai
 #SBATCH --account=ruqiz
 #SBATCH --qos=normal
@@ -8,7 +8,7 @@
 #SBATCH --ntasks-per-node=8
 #SBATCH --gres=gpu:8
 #SBATCH --cpus-per-task=14
-#SBATCH --time=2-12:00:00
+#SBATCH --time=0-12:00:00
 #SBATCH --output=./logs/slurm-%j.out
 #SBATCH --error=./logs/slurm-%j.err
 #SBATCH --mail-type=ALL
@@ -20,7 +20,7 @@ module load conda/2024.09
 conda activate verl
 
 data_root="./data"
-train_files="['$data_root/numina_math/train.parquet']"
+train_files="['$data_root/numina_math_100k/train.parquet']"
 
 eval_math500=$data_root/math500/test.parquet
 eval_amc23=$data_root/amc23/test.parquet
@@ -34,7 +34,7 @@ rollout_n=8
 batch_size_per_gpu=32
 
 project_name="antifragile_rl"
-experiment_name="qwen3-4b-base_numina_math_full_grpo_n8"
+experiment_name="qwen3-4b-base_numina_math_grpo_n8"
 
 # Auto-detect number of GPUs and nodes
 n_gpus_per_node=""
@@ -116,6 +116,6 @@ python3 -m verl.trainer.main_ppo \
     trainer.experiment_name=$experiment_name \
     trainer.n_gpus_per_node=$n_gpus_per_node \
     trainer.nnodes=$nnodes \
-    trainer.save_freq=5 \
+    trainer.save_freq=20 \
     trainer.test_freq=5 \
     trainer.total_epochs=1 $@

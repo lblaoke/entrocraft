@@ -1322,6 +1322,20 @@ class RayPPOTrainer:
                             config=self.config.algorithm,
                         )
 
+                        resp_mask = batch.batch["response_mask"]
+                        old_lp = batch.batch["old_log_probs"]
+                        adv = batch.batch["advantages"]
+                        resp_len = resp_mask.sum(dim=-1).clamp(min=1)
+                        seq_ll = (old_lp * resp_mask).sum(dim=-1) / resp_len
+                        seq_adv = (adv * resp_mask).sum(dim=-1) / resp_len
+
+                        pos_mask = seq_adv > 0
+                        neg_mask = seq_adv < 0
+                        if pos_mask.any():
+                            metrics["actor/mean_ll_per_token_adv_positive"] = seq_ll[pos_mask].mean().item()
+                        if neg_mask.any():
+                            metrics["actor/mean_ll_per_token_adv_negative"] = seq_ll[neg_mask].mean().item()
+
                     # update critic
                     if self.use_critic:
                         with marked_timer("update_critic", timing_raw, color="pink"):
