@@ -1,14 +1,14 @@
 #!/bin/bash
 
-#SBATCH --job-name=qwen3-8b-base_numina_math_grpo_n8
+#SBATCH --job-name=qwen3-8b-base_numina_math_grpo_n8_temp0.1
 #SBATCH --partition=ai
 #SBATCH --account=ruqiz
-#SBATCH --qos=preemptible
+#SBATCH --qos=normal
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=8
 #SBATCH --gres=gpu:8
 #SBATCH --cpus-per-task=14
-#SBATCH --time=0-20:00:00
+#SBATCH --time=0-18:00:00
 #SBATCH --output=./logs/slurm-%j.out
 #SBATCH --error=./logs/slurm-%j.err
 #SBATCH --mail-type=ALL
@@ -34,7 +34,7 @@ rollout_n=8
 batch_size_per_gpu=32
 
 project_name="antifragile_rl"
-experiment_name="qwen3-8b-base_numina_math_grpo_n8"
+experiment_name="qwen3-8b-base_numina_math_grpo_n8_temp0.1"
 
 # Auto-detect number of GPUs and nodes
 n_gpus_per_node=""
@@ -104,7 +104,7 @@ python3 -m verl.trainer.main_ppo \
     actor_rollout_ref.rollout.n=$rollout_n \
     actor_rollout_ref.ref.log_prob_micro_batch_size_per_gpu=$batch_size_per_gpu \
     actor_rollout_ref.ref.fsdp_config.param_offload=True \
-    actor_rollout_ref.rollout.val_kwargs.temperature=0.7 \
+    actor_rollout_ref.rollout.val_kwargs.temperature=0.1 \
     actor_rollout_ref.rollout.val_kwargs.n=32 \
     actor_rollout_ref.rollout.val_kwargs.do_sample=True \
     critic.model.enable_gradient_checkpointing=True \

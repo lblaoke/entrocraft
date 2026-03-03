@@ -1,0 +1,1352 @@
+{
+  "base": {
+    "label": "base",
+    "checkpoint": null,
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 433.9,
+        "mean_log_likelihood": -32.12272210121155,
+        "mean_log_osb": -368577.61484375,
+        "mean_log_likelihood_per_token": -0.07403254690299967,
+        "mean_log_osb_per_token": -849.4529035348007
+      }
+    }
+  },
+  "global_step_10": {
+    "label": "global_step_10",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_10/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 635.4,
+        "mean_log_likelihood": -34.35778408050537,
+        "mean_log_osb": -598551.5859375,
+        "mean_log_likelihood_per_token": -0.05407268504958352,
+        "mean_log_osb_per_token": -942.0075321647781
+      }
+    }
+  },
+  "global_step_100": {
+    "label": "global_step_100",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_100/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 574.7,
+        "mean_log_likelihood": -11.175273871421814,
+        "mean_log_osb": -685033.2875,
+        "mean_log_likelihood_per_token": -0.01944540433516933,
+        "mean_log_osb_per_token": -1191.9841439011657
+      }
+    }
+  },
+  "global_step_105": {
+    "label": "global_step_105",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_105/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 535.5,
+        "mean_log_likelihood": -12.509082508087157,
+        "mean_log_osb": -644765.81875,
+        "mean_log_likelihood_per_token": -0.023359631200909725,
+        "mean_log_osb_per_token": -1204.04447945845
+      }
+    }
+  },
+  "global_step_110": {
+    "label": "global_step_110",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_110/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 650.1,
+        "mean_log_likelihood": -13.357331156730652,
+        "mean_log_osb": -776860.153125,
+        "mean_log_likelihood_per_token": -0.020546579228935012,
+        "mean_log_osb_per_token": -1194.9856224042453
+      }
+    }
+  },
+  "global_step_115": {
+    "label": "global_step_115",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_115/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 568.0,
+        "mean_log_likelihood": -11.41048092842102,
+        "mean_log_osb": -682281.253125,
+        "mean_log_likelihood_per_token": -0.02008887487398067,
+        "mean_log_osb_per_token": -1201.1993893045776
+      }
+    }
+  },
+  "global_step_120": {
+    "label": "global_step_120",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_120/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 540.3,
+        "mean_log_likelihood": -11.200816440582276,
+        "mean_log_osb": -645363.71875,
+        "mean_log_likelihood_per_token": -0.02073073559241584,
+        "mean_log_osb_per_token": -1194.454411900796
+      }
+    }
+  },
+  "global_step_125": {
+    "label": "global_step_125",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_125/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 594.5,
+        "mean_log_likelihood": -8.270139622688294,
+        "mean_log_osb": -722674.4625,
+        "mean_log_likelihood_per_token": -0.013911084310661554,
+        "mean_log_osb_per_token": -1215.600441547519
+      }
+    }
+  },
+  "global_step_130": {
+    "label": "global_step_130",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_130/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 563.3,
+        "mean_log_likelihood": -11.489711785316468,
+        "mean_log_osb": -681507.08125,
+        "mean_log_likelihood_per_token": -0.020397145012100958,
+        "mean_log_osb_per_token": -1209.8474724835792
+      }
+    }
+  },
+  "global_step_135": {
+    "label": "global_step_135",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_135/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 567.7,
+        "mean_log_likelihood": -9.691588091850281,
+        "mean_log_osb": -695198.35625,
+        "mean_log_likelihood_per_token": -0.01707167181935931,
+        "mean_log_osb_per_token": -1224.5875572485465
+      }
+    }
+  },
+  "global_step_140": {
+    "label": "global_step_140",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_140/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 589.5,
+        "mean_log_likelihood": -9.37061665058136,
+        "mean_log_osb": -722648.18125,
+        "mean_log_likelihood_per_token": -0.015895872180799592,
+        "mean_log_osb_per_token": -1225.8662955894827
+      }
+    }
+  },
+  "global_step_145": {
+    "label": "global_step_145",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_145/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 579.7,
+        "mean_log_likelihood": -9.190337979793549,
+        "mean_log_osb": -711615.1421875,
+        "mean_log_likelihood_per_token": -0.015853610453326804,
+        "mean_log_osb_per_token": -1227.5576025314817
+      }
+    }
+  },
+  "global_step_15": {
+    "label": "global_step_15",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_15/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 505.9,
+        "mean_log_likelihood": -26.371028995513917,
+        "mean_log_osb": -486276.928125,
+        "mean_log_likelihood_per_token": -0.05212695986462526,
+        "mean_log_osb_per_token": -961.2115598438427
+      }
+    }
+  },
+  "global_step_150": {
+    "label": "global_step_150",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_150/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 519.4,
+        "mean_log_likelihood": -8.466585373878479,
+        "mean_log_osb": -637837.753125,
+        "mean_log_likelihood_per_token": -0.016300703453751404,
+        "mean_log_osb_per_token": -1228.028019108587
+      }
+    }
+  },
+  "global_step_155": {
+    "label": "global_step_155",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_155/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 685.6,
+        "mean_log_likelihood": -10.075280225276947,
+        "mean_log_osb": -834538.675,
+        "mean_log_likelihood_per_token": -0.014695566256238253,
+        "mean_log_osb_per_token": -1217.238440781797
+      }
+    }
+  },
+  "global_step_160": {
+    "label": "global_step_160",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_160/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 627.7,
+        "mean_log_likelihood": -9.211954152584076,
+        "mean_log_osb": -763088.040625,
+        "mean_log_likelihood_per_token": -0.01467572750132878,
+        "mean_log_osb_per_token": -1215.6890881392385
+      }
+    }
+  },
+  "global_step_165": {
+    "label": "global_step_165",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_165/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 618.8,
+        "mean_log_likelihood": -8.51377638578415,
+        "mean_log_osb": -756561.73125,
+        "mean_log_likelihood_per_token": -0.013758526803141807,
+        "mean_log_osb_per_token": -1222.627232142857
+      }
+    }
+  },
+  "global_step_170": {
+    "label": "global_step_170",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_170/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 612.8,
+        "mean_log_likelihood": -9.684106814861298,
+        "mean_log_osb": -745519.16875,
+        "mean_log_likelihood_per_token": -0.015803046368898985,
+        "mean_log_osb_per_token": -1216.5782779862925
+      }
+    }
+  },
+  "global_step_175": {
+    "label": "global_step_175",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_175/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 558.4,
+        "mean_log_likelihood": -8.41611008644104,
+        "mean_log_osb": -680783.034375,
+        "mean_log_likelihood_per_token": -0.015071830384027653,
+        "mean_log_osb_per_token": -1219.167325170129
+      }
+    }
+  },
+  "global_step_180": {
+    "label": "global_step_180",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_180/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 618.2,
+        "mean_log_likelihood": -7.6717145323753355,
+        "mean_log_osb": -753364.45625,
+        "mean_log_likelihood_per_token": -0.012409761456446676,
+        "mean_log_osb_per_token": -1218.6419544645746
+      }
+    }
+  },
+  "global_step_185": {
+    "label": "global_step_185",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_185/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 564.1,
+        "mean_log_likelihood": -10.539500522613526,
+        "mean_log_osb": -689268.346875,
+        "mean_log_likelihood_per_token": -0.01868374494347372,
+        "mean_log_osb_per_token": -1221.8903507800035
+      }
+    }
+  },
+  "global_step_190": {
+    "label": "global_step_190",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_190/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 615.4,
+        "mean_log_likelihood": -11.134208273887634,
+        "mean_log_osb": -752648.346875,
+        "mean_log_likelihood_per_token": -0.018092636129164175,
+        "mean_log_osb_per_token": -1223.0229880971726
+      }
+    }
+  },
+  "global_step_195": {
+    "label": "global_step_195",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_195/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 625.5,
+        "mean_log_likelihood": -7.486835265159607,
+        "mean_log_osb": -770872.490625,
+        "mean_log_likelihood_per_token": -0.011969360935506965,
+        "mean_log_osb_per_token": -1232.4100569544364
+      }
+    }
+  },
+  "global_step_20": {
+    "label": "global_step_20",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_20/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 532.7,
+        "mean_log_likelihood": -28.25861873626709,
+        "mean_log_osb": -535140.72265625,
+        "mean_log_likelihood_per_token": -0.05304790451711486,
+        "mean_log_osb_per_token": -1004.5817958630561
+      }
+    }
+  },
+  "global_step_200": {
+    "label": "global_step_200",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_200/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 860.1,
+        "mean_log_likelihood": -9.483372402191161,
+        "mean_log_osb": -1031942.3625,
+        "mean_log_likelihood_per_token": -0.011025895131020999,
+        "mean_log_osb_per_token": -1199.7934687826996
+      }
+    }
+  },
+  "global_step_205": {
+    "label": "global_step_205",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_205/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 635.3,
+        "mean_log_likelihood": -8.75280237197876,
+        "mean_log_osb": -777904.071875,
+        "mean_log_likelihood_per_token": -0.0137774317204136,
+        "mean_log_osb_per_token": -1224.467293994963
+      }
+    }
+  },
+  "global_step_210": {
+    "label": "global_step_210",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_210/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 603.0,
+        "mean_log_likelihood": -8.511269295215607,
+        "mean_log_osb": -742317.0015625,
+        "mean_log_likelihood_per_token": -0.014114874453093876,
+        "mean_log_osb_per_token": -1231.0398035862356
+      }
+    }
+  },
+  "global_step_215": {
+    "label": "global_step_215",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_215/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 674.1,
+        "mean_log_likelihood": -7.853944981098175,
+        "mean_log_osb": -831678.590625,
+        "mean_log_likelihood_per_token": -0.011651008724370531,
+        "mean_log_osb_per_token": -1233.7614458166443
+      }
+    }
+  },
+  "global_step_220": {
+    "label": "global_step_220",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_220/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 728.8,
+        "mean_log_likelihood": -12.502058935165405,
+        "mean_log_osb": -888314.2125,
+        "mean_log_likelihood_per_token": -0.017154306991170973,
+        "mean_log_osb_per_token": -1218.872410126235
+      }
+    }
+  },
+  "global_step_225": {
+    "label": "global_step_225",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_225/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 596.6,
+        "mean_log_likelihood": -6.001949787139893,
+        "mean_log_osb": -738320.06875,
+        "mean_log_likelihood_per_token": -0.010060257772611285,
+        "mean_log_osb_per_token": -1237.5462097720415
+      }
+    }
+  },
+  "global_step_230": {
+    "label": "global_step_230",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_230/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 611.2,
+        "mean_log_likelihood": -8.03606504201889,
+        "mean_log_osb": -757725.771875,
+        "mean_log_likelihood_per_token": -0.013148012176078026,
+        "mean_log_osb_per_token": -1239.734574402814
+      }
+    }
+  },
+  "global_step_235": {
+    "label": "global_step_235",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_235/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 629.7,
+        "mean_log_likelihood": -10.332202291488647,
+        "mean_log_osb": -779915.2625,
+        "mean_log_likelihood_per_token": -0.016408134494979586,
+        "mean_log_osb_per_token": -1238.550520088931
+      }
+    }
+  },
+  "global_step_240": {
+    "label": "global_step_240",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_240/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 642.3,
+        "mean_log_likelihood": -7.382130217552185,
+        "mean_log_osb": -797023.146875,
+        "mean_log_likelihood_per_token": -0.011493274509656213,
+        "mean_log_osb_per_token": -1240.8892213529505
+      }
+    }
+  },
+  "global_step_245": {
+    "label": "global_step_245",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_245/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 616.6,
+        "mean_log_likelihood": -7.331769585609436,
+        "mean_log_osb": -764454.71875,
+        "mean_log_likelihood_per_token": -0.01189064155953525,
+        "mean_log_osb_per_token": -1239.7903320629257
+      }
+    }
+  },
+  "global_step_25": {
+    "label": "global_step_25",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_25/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 569.9,
+        "mean_log_likelihood": -23.124309873580934,
+        "mean_log_osb": -585288.6875,
+        "mean_log_likelihood_per_token": -0.04057608330159841,
+        "mean_log_osb_per_token": -1027.0024346376558
+      }
+    }
+  },
+  "global_step_250": {
+    "label": "global_step_250",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_250/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 671.9,
+        "mean_log_likelihood": -7.283409452438354,
+        "mean_log_osb": -832468.69375,
+        "mean_log_likelihood_per_token": -0.010840020021488844,
+        "mean_log_osb_per_token": -1238.9770706206282
+      }
+    }
+  },
+  "global_step_255": {
+    "label": "global_step_255",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_255/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 622.0,
+        "mean_log_likelihood": -6.44301118850708,
+        "mean_log_osb": -772230.253125,
+        "mean_log_likelihood_per_token": -0.01035853888827505,
+        "mean_log_osb_per_token": -1241.527738143087
+      }
+    }
+  },
+  "global_step_260": {
+    "label": "global_step_260",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_260/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 647.7,
+        "mean_log_likelihood": -7.186916995048523,
+        "mean_log_osb": -804708.65625,
+        "mean_log_likelihood_per_token": -0.011096058352707307,
+        "mean_log_osb_per_token": -1242.4095356646594
+      }
+    }
+  },
+  "global_step_265": {
+    "label": "global_step_265",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_265/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 598.6,
+        "mean_log_likelihood": -6.012734603881836,
+        "mean_log_osb": -744011.703125,
+        "mean_log_likelihood_per_token": -0.010044661884199526,
+        "mean_log_osb_per_token": -1242.9196510608085
+      }
+    }
+  },
+  "global_step_270": {
+    "label": "global_step_270",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_270/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 647.2,
+        "mean_log_likelihood": -7.643484723567963,
+        "mean_log_osb": -804732.95625,
+        "mean_log_likelihood_per_token": -0.011810081464103773,
+        "mean_log_osb_per_token": -1243.4069163318911
+      }
+    }
+  },
+  "global_step_275": {
+    "label": "global_step_275",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_275/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 649.7,
+        "mean_log_likelihood": -6.8464374303817745,
+        "mean_log_osb": -812775.625,
+        "mean_log_likelihood_per_token": -0.010537844282563913,
+        "mean_log_osb_per_token": -1251.001423734031
+      }
+    }
+  },
+  "global_step_280": {
+    "label": "global_step_280",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_280/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 613.1,
+        "mean_log_likelihood": -7.288338088989258,
+        "mean_log_osb": -768606.3375,
+        "mean_log_likelihood_per_token": -0.011887682415575368,
+        "mean_log_osb_per_token": -1253.639434839341
+      }
+    }
+  },
+  "global_step_285": {
+    "label": "global_step_285",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_285/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 559.9,
+        "mean_log_likelihood": -6.768142557144165,
+        "mean_log_osb": -701075.4375,
+        "mean_log_likelihood_per_token": -0.012088127446229979,
+        "mean_log_osb_per_token": -1252.1440212537955
+      }
+    }
+  },
+  "global_step_290": {
+    "label": "global_step_290",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_290/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 582.4,
+        "mean_log_likelihood": -7.510692191123963,
+        "mean_log_osb": -727533.425,
+        "mean_log_likelihood_per_token": -0.012896106097396914,
+        "mean_log_osb_per_token": -1249.1988753434068
+      }
+    }
+  },
+  "global_step_295": {
+    "label": "global_step_295",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_295/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 673.3,
+        "mean_log_likelihood": -8.824344658851624,
+        "mean_log_osb": -843094.31875,
+        "mean_log_likelihood_per_token": -0.013106111182016374,
+        "mean_log_osb_per_token": -1252.1822645923066
+      }
+    }
+  },
+  "global_step_30": {
+    "label": "global_step_30",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_30/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 563.6,
+        "mean_log_likelihood": -22.908450317382812,
+        "mean_log_osb": -606009.2875,
+        "mean_log_likelihood_per_token": -0.040646647120977306,
+        "mean_log_osb_per_token": -1075.2471389283178
+      }
+    }
+  },
+  "global_step_300": {
+    "label": "global_step_300",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_300/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 640.8,
+        "mean_log_likelihood": -9.598872709274293,
+        "mean_log_osb": -807523.884375,
+        "mean_log_likelihood_per_token": -0.014979514215471744,
+        "mean_log_osb_per_token": -1260.1808432818352
+      }
+    }
+  },
+  "global_step_305": {
+    "label": "global_step_305",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_305/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 642.3,
+        "mean_log_likelihood": -7.312686538696289,
+        "mean_log_osb": -808151.790625,
+        "mean_log_likelihood_per_token": -0.011385157307638626,
+        "mean_log_osb_per_token": -1258.2154610384557
+      }
+    }
+  },
+  "global_step_310": {
+    "label": "global_step_310",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_310/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 655.2,
+        "mean_log_likelihood": -12.244809675216676,
+        "mean_log_osb": -817846.996875,
+        "mean_log_likelihood_per_token": -0.018688659455458907,
+        "mean_log_osb_per_token": -1248.2402272206957
+      }
+    }
+  },
+  "global_step_315": {
+    "label": "global_step_315",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_315/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 607.0,
+        "mean_log_likelihood": -6.231019675731659,
+        "mean_log_osb": -760753.815625,
+        "mean_log_likelihood_per_token": -0.010265271294450838,
+        "mean_log_osb_per_token": -1253.3011789538716
+      }
+    }
+  },
+  "global_step_320": {
+    "label": "global_step_320",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_320/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 655.8,
+        "mean_log_likelihood": -6.09692656993866,
+        "mean_log_osb": -821787.096875,
+        "mean_log_likelihood_per_token": -0.009296929810824429,
+        "mean_log_osb_per_token": -1253.1062776379995
+      }
+    }
+  },
+  "global_step_325": {
+    "label": "global_step_325",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_325/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 702.9,
+        "mean_log_likelihood": -6.51086208820343,
+        "mean_log_osb": -888634.221875,
+        "mean_log_likelihood_per_token": -0.009262856861862897,
+        "mean_log_osb_per_token": -1264.239894544032
+      }
+    }
+  },
+  "global_step_330": {
+    "label": "global_step_330",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_330/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 651.7,
+        "mean_log_likelihood": -8.544349241256715,
+        "mean_log_osb": -818805.21875,
+        "mean_log_likelihood_per_token": -0.013110862730177556,
+        "mean_log_osb_per_token": -1256.414329829676
+      }
+    }
+  },
+  "global_step_335": {
+    "label": "global_step_335",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_335/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 628.0,
+        "mean_log_likelihood": -6.936960124969483,
+        "mean_log_osb": -790530.00625,
+        "mean_log_likelihood_per_token": -0.01104611484867752,
+        "mean_log_osb_per_token": -1258.8057424363058
+      }
+    }
+  },
+  "global_step_340": {
+    "label": "global_step_340",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_340/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 636.9,
+        "mean_log_likelihood": -6.011839962005615,
+        "mean_log_osb": -803227.3375,
+        "mean_log_likelihood_per_token": -0.009439221168167082,
+        "mean_log_osb_per_token": -1261.1514170199405
+      }
+    }
+  },
+  "global_step_345": {
+    "label": "global_step_345",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_345/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 648.7,
+        "mean_log_likelihood": -6.643434894084931,
+        "mean_log_osb": -815767.75,
+        "mean_log_likelihood_per_token": -0.010241151370564097,
+        "mean_log_osb_per_token": -1257.5423924772622
+      }
+    }
+  },
+  "global_step_35": {
+    "label": "global_step_35",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_35/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 485.7,
+        "mean_log_likelihood": -18.66709747314453,
+        "mean_log_osb": -519013.9828125,
+        "mean_log_likelihood_per_token": -0.038433389897353364,
+        "mean_log_osb_per_token": -1068.589629014824
+      }
+    }
+  },
+  "global_step_350": {
+    "label": "global_step_350",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_350/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 607.3,
+        "mean_log_likelihood": -5.467148780822754,
+        "mean_log_osb": -773890.140625,
+        "mean_log_likelihood_per_token": -0.009002385609785533,
+        "mean_log_osb_per_token": -1274.3127624320764
+      }
+    }
+  },
+  "global_step_355": {
+    "label": "global_step_355",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_355/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 553.7,
+        "mean_log_likelihood": -7.561856085062027,
+        "mean_log_osb": -701490.08125,
+        "mean_log_likelihood_per_token": -0.013656955183424285,
+        "mean_log_osb_per_token": -1266.913637800253
+      }
+    }
+  },
+  "global_step_360": {
+    "label": "global_step_360",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_360/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 567.0,
+        "mean_log_likelihood": -6.17340549826622,
+        "mean_log_osb": -720343.10625,
+        "mean_log_likelihood_per_token": -0.010887840384949242,
+        "mean_log_osb_per_token": -1270.4463955026454
+      }
+    }
+  },
+  "global_step_365": {
+    "label": "global_step_365",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_365/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 647.0,
+        "mean_log_likelihood": -6.398535794019699,
+        "mean_log_osb": -826064.309375,
+        "mean_log_likelihood_per_token": -0.00988954527669196,
+        "mean_log_osb_per_token": -1276.760910935085
+      }
+    }
+  },
+  "global_step_370": {
+    "label": "global_step_370",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_370/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 606.1,
+        "mean_log_likelihood": -7.303073167800903,
+        "mean_log_osb": -775717.165625,
+        "mean_log_likelihood_per_token": -0.012049287523182484,
+        "mean_log_osb_per_token": -1279.8501330226036
+      }
+    }
+  },
+  "global_step_375": {
+    "label": "global_step_375",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_375/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 649.4,
+        "mean_log_likelihood": -5.645348644256591,
+        "mean_log_osb": -829176.79375,
+        "mean_log_likelihood_per_token": -0.008693176230761613,
+        "mean_log_osb_per_token": -1276.8352228980598
+      }
+    }
+  },
+  "global_step_380": {
+    "label": "global_step_380",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_380/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 642.2,
+        "mean_log_likelihood": -6.753291511535645,
+        "mean_log_osb": -817945.246875,
+        "mean_log_likelihood_per_token": -0.010515869684733174,
+        "mean_log_osb_per_token": -1273.6612377374647
+      }
+    }
+  },
+  "global_step_385": {
+    "label": "global_step_385",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_385/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 656.5,
+        "mean_log_likelihood": -6.553969550132751,
+        "mean_log_osb": -840436.40625,
+        "mean_log_likelihood_per_token": -0.009983198096165654,
+        "mean_log_osb_per_token": -1280.1773134044174
+      }
+    }
+  },
+  "global_step_390": {
+    "label": "global_step_390",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_390/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 684.8,
+        "mean_log_likelihood": -7.6038788795471195,
+        "mean_log_osb": -873111.1,
+        "mean_log_likelihood_per_token": -0.011103795092796612,
+        "mean_log_osb_per_token": -1274.9870035046729
+      }
+    }
+  },
+  "global_step_395": {
+    "label": "global_step_395",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_395/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 645.4,
+        "mean_log_likelihood": -6.017898976802826,
+        "mean_log_osb": -830544.753125,
+        "mean_log_likelihood_per_token": -0.009324293425476955,
+        "mean_log_osb_per_token": -1286.8682261000931
+      }
+    }
+  },
+  "global_step_40": {
+    "label": "global_step_40",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_40/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 558.9,
+        "mean_log_likelihood": -18.63643889427185,
+        "mean_log_osb": -618605.65625,
+        "mean_log_likelihood_per_token": -0.033344853988677495,
+        "mean_log_osb_per_token": -1106.8270822150653
+      }
+    }
+  },
+  "global_step_400": {
+    "label": "global_step_400",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_400/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 638.0,
+        "mean_log_likelihood": -4.190618550777435,
+        "mean_log_osb": -813828.74375,
+        "mean_log_likelihood_per_token": -0.00656836763444739,
+        "mean_log_osb_per_token": -1275.5936422413793
+      }
+    }
+  },
+  "global_step_405": {
+    "label": "global_step_405",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_405/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 630.4,
+        "mean_log_likelihood": -5.844446671009064,
+        "mean_log_osb": -813690.56875,
+        "mean_log_likelihood_per_token": -0.009271013120255495,
+        "mean_log_osb_per_token": -1290.7528057582488
+      }
+    }
+  },
+  "global_step_410": {
+    "label": "global_step_410",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_410/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 629.0,
+        "mean_log_likelihood": -5.6432441711425785,
+        "mean_log_osb": -805390.6625,
+        "mean_log_likelihood_per_token": -0.0089717713372696,
+        "mean_log_osb_per_token": -1280.4303060413354
+      }
+    }
+  },
+  "global_step_415": {
+    "label": "global_step_415",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_415/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 683.2,
+        "mean_log_likelihood": -8.283603405952453,
+        "mean_log_osb": -875721.109375,
+        "mean_log_likelihood_per_token": -0.012124712245246564,
+        "mean_log_osb_per_token": -1281.7931928790983
+      }
+    }
+  },
+  "global_step_420": {
+    "label": "global_step_420",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_420/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 554.4,
+        "mean_log_likelihood": -5.106230866909027,
+        "mean_log_osb": -712306.590625,
+        "mean_log_likelihood_per_token": -0.009210373136560295,
+        "mean_log_osb_per_token": -1284.8242976641413
+      }
+    }
+  },
+  "global_step_425": {
+    "label": "global_step_425",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_425/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 606.3,
+        "mean_log_likelihood": -7.096207970380783,
+        "mean_log_osb": -778756.415625,
+        "mean_log_likelihood_per_token": -0.011704120023718925,
+        "mean_log_osb_per_token": -1284.4407316922318
+      }
+    }
+  },
+  "global_step_430": {
+    "label": "global_step_430",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_430/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 650.6,
+        "mean_log_likelihood": -5.43552395105362,
+        "mean_log_osb": -835673.4125,
+        "mean_log_likelihood_per_token": -0.008354632571554903,
+        "mean_log_osb_per_token": -1284.4657431601597
+      }
+    }
+  },
+  "global_step_435": {
+    "label": "global_step_435",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_435/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 677.7,
+        "mean_log_likelihood": -5.795850014686584,
+        "mean_log_osb": -872464.890625,
+        "mean_log_likelihood_per_token": -0.008552235524105922,
+        "mean_log_osb_per_token": -1287.391014645123
+      }
+    }
+  },
+  "global_step_440": {
+    "label": "global_step_440",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_440/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 581.2,
+        "mean_log_likelihood": -6.1981170058250425,
+        "mean_log_osb": -744342.859375,
+        "mean_log_likelihood_per_token": -0.010664344469760912,
+        "mean_log_osb_per_token": -1280.700033336201
+      }
+    }
+  },
+  "global_step_444": {
+    "label": "global_step_444",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_444/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 738.7,
+        "mean_log_likelihood": -6.746360874176025,
+        "mean_log_osb": -950852.165625,
+        "mean_log_likelihood_per_token": -0.009132747900603796,
+        "mean_log_osb_per_token": -1287.196650365507
+      }
+    }
+  },
+  "global_step_45": {
+    "label": "global_step_45",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_45/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 552.8,
+        "mean_log_likelihood": -20.56794204711914,
+        "mean_log_osb": -610955.803125,
+        "mean_log_likelihood_per_token": -0.037206841619245916,
+        "mean_log_osb_per_token": -1105.2022487789436
+      }
+    }
+  },
+  "global_step_5": {
+    "label": "global_step_5",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_5/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 455.1,
+        "mean_log_likelihood": -29.820160484313966,
+        "mean_log_osb": -410468.8484375,
+        "mean_log_likelihood_per_token": -0.06552441328128755,
+        "mean_log_osb_per_token": -901.9311106075587
+      }
+    }
+  },
+  "global_step_50": {
+    "label": "global_step_50",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_50/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 598.3,
+        "mean_log_likelihood": -20.645965242385863,
+        "mean_log_osb": -662693.54375,
+        "mean_log_likelihood_per_token": -0.034507713926768956,
+        "mean_log_osb_per_token": -1107.6275175497242
+      }
+    }
+  },
+  "global_step_55": {
+    "label": "global_step_55",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_55/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 579.9,
+        "mean_log_likelihood": -17.795668530464173,
+        "mean_log_osb": -653711.875,
+        "mean_log_likelihood_per_token": -0.03068747806598409,
+        "mean_log_osb_per_token": -1127.2837989308503
+      }
+    }
+  },
+  "global_step_60": {
+    "label": "global_step_60",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_60/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 664.0,
+        "mean_log_likelihood": -13.978406047821045,
+        "mean_log_osb": -772318.3890625,
+        "mean_log_likelihood_per_token": -0.021051816337079886,
+        "mean_log_osb_per_token": -1163.1301040097892
+      }
+    }
+  },
+  "global_step_65": {
+    "label": "global_step_65",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_65/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 617.8,
+        "mean_log_likelihood": -15.726825332641601,
+        "mean_log_osb": -718291.79375,
+        "mean_log_likelihood_per_token": -0.02545617567601425,
+        "mean_log_osb_per_token": -1162.660721511816
+      }
+    }
+  },
+  "global_step_70": {
+    "label": "global_step_70",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_70/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 601.8,
+        "mean_log_likelihood": -16.897422742843627,
+        "mean_log_osb": -696852.6125,
+        "mean_log_likelihood_per_token": -0.028078136827589945,
+        "mean_log_osb_per_token": -1157.947179295447
+      }
+    }
+  },
+  "global_step_75": {
+    "label": "global_step_75",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_75/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 620.2,
+        "mean_log_likelihood": -14.210981750488282,
+        "mean_log_osb": -730391.15,
+        "mean_log_likelihood_per_token": -0.022913546840516413,
+        "mean_log_osb_per_token": -1177.67034827475
+      }
+    }
+  },
+  "global_step_80": {
+    "label": "global_step_80",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_80/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 519.8,
+        "mean_log_likelihood": -12.848181915283202,
+        "mean_log_osb": -613968.8625,
+        "mean_log_likelihood_per_token": -0.02471754889435014,
+        "mean_log_osb_per_token": -1181.1636446710274
+      }
+    }
+  },
+  "global_step_85": {
+    "label": "global_step_85",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_85/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 532.8,
+        "mean_log_likelihood": -12.861129140853881,
+        "mean_log_osb": -631892.940625,
+        "mean_log_likelihood_per_token": -0.024138755894996027,
+        "mean_log_osb_per_token": -1185.985248920796
+      }
+    }
+  },
+  "global_step_90": {
+    "label": "global_step_90",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_90/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 577.0,
+        "mean_log_likelihood": -13.220261240005494,
+        "mean_log_osb": -684395.9546875,
+        "mean_log_likelihood_per_token": -0.022912064540737423,
+        "mean_log_osb_per_token": -1186.1281710355286
+      }
+    }
+  },
+  "global_step_95": {
+    "label": "global_step_95",
+    "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_95/actor",
+    "datasets": {
+      "test": {
+        "num_samples": 10,
+        "num_valid": 10,
+        "mean_response_length": 532.8,
+        "mean_log_likelihood": -11.054203009605407,
+        "mean_log_osb": -634943.98125,
+        "mean_log_likelihood_per_token": -0.02074737802103117,
+        "mean_log_osb_per_token": -1191.7116765202702
+      }
+    }
+  }
+}

@@ -369,6 +369,48 @@ class DataParallelPPOActor(BasePPOActor):
         return log_probs, entropys
 
     @GPUMemoryLogger(role="dp actor", logger=logger)
+    @torch.no_grad()
+    def compute_osb_metrics(self, data: DataProto) -> tuple[torch.Tensor, torch.Tensor]:
+        """Compute per-token target log probs and sum-of-all-log-probs for OSB.
+
+        Returns:
+            target_log_probs: (batch, response_len)
+            sum_log_probs: (batch, response_len) — sum of log p over all vocab tokens
+        """
+        self.actor_module.eval()
+        micro_batch_size = data.meta_info["micro_batch_size"]
+        temperature = data.meta_info["temperature"]
+
+        data = data.select(batch_keys=["responses", "input_ids", "attention_mask", "position_ids"])
+        micro_batches = data.split(micro_batch_size)
+
+        target_lp_lst, sum_lp_lst = [], []
+        for micro_batch in micro_batches:
+            micro_batch = micro_batch.to(get_device_id())
+            response_length = micro_batch.batch["responses"].size(-1)
+
+            with torch.autocast(device_type=self.device_name, dtype=torch.bfloat16):
+                output = self.actor_module(
+                    input_ids=micro_batch.batch["input_ids"],
+                    attention_mask=micro_batch.batch["attention_mask"],
+                    position_ids=micro_batch.batch["position_ids"],
+                    use_cache=False,
+                )
+
+            logits = output.logits[:, -response_length - 1 : -1, :].float()
+            logits.div_(temperature)
+            response_ids = micro_batch.batch["responses"]
+
+            log_probs = torch.nn.functional.log_softmax(logits, dim=-1)
+            target_lp = log_probs.gather(-1, response_ids.unsqueeze(-1)).squeeze(-1)
+            sum_lp = log_probs.sum(dim=-1)
+
+            target_lp_lst.append(target_lp.cpu())
+            sum_lp_lst.append(sum_lp.cpu())
+
+        return torch.cat(target_lp_lst, dim=0), torch.cat(sum_lp_lst, dim=0)
+
+    @GPUMemoryLogger(role="dp actor", logger=logger)
     def update_policy(self, data: DataProto):
         # make sure we are in training mode
         self.actor_module.train()

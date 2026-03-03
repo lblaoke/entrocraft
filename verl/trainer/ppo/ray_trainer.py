@@ -262,18 +262,8 @@ def compute_advantage(
             index=data.non_tensor_batch['uid'])
         data.batch['advantages'] = advantages
         data.batch['returns'] = returns
-    elif adv_estimator == AdvantageEstimator.GRPO_NSR_FIX:
-        advantages, returns = core_algos.compute_grpo_nsr_fix_outcome_advantage(
-            token_level_rewards=data.batch['token_level_rewards'],
-            response_mask=data.batch['response_mask'],
-            step=global_steps,
-            current_entropy=data.non_tensor_batch['current_entropy'][0],
-            fixed_entropy=config.entropy_control.get("fixed_entropy", 0.0),
-            index=data.non_tensor_batch['uid'])
-        data.batch['advantages'] = advantages
-        data.batch['returns'] = returns
-    elif adv_estimator == AdvantageEstimator.GRPO_NSR_RANGE:
-        advantages, returns = core_algos.compute_grpo_nsr_range_outcome_advantage(
+    elif adv_estimator == AdvantageEstimator.GRPO_RANGE:
+        advantages, returns = core_algos.compute_grpo_range_outcome_advantage(
             token_level_rewards=data.batch['token_level_rewards'],
             response_mask=data.batch['response_mask'],
             step=global_steps,

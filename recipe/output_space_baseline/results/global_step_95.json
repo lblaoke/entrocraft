@@ -1,0 +1,87 @@
+{
+  "label": "global_step_95",
+  "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_95/actor",
+  "datasets": {
+    "test": {
+      "num_samples": 10,
+      "num_valid": 10,
+      "mean_response_length": 532.8,
+      "mean_log_likelihood": -11.054203009605407,
+      "mean_log_osb": -634943.98125,
+      "mean_log_likelihood_per_token": -0.02074737802103117,
+      "mean_log_osb_per_token": -1191.7116765202702,
+      "per_sample": [
+        {
+          "log_likelihood": -10.176076889038086,
+          "log_osb": -615794.1875,
+          "response_length": 517,
+          "generated_response": " ```python\n# Let's denote the magic square as follows:\n# | n-3 | 3   | n+1 |\n# | n+2 | 2n-9| 1   |\n# | 2   | n   | n-1 |\n\n# Since it is a magic square, the sum of each row, each column, and each diagonal must be the same. Let's denote this common sum by \\( S \\).\n\n# First, let's find the sum of the first row:\n# \\( S = (n-3) + 3 + (n+1) = 2n + 1 \\)\n\n# Next, let's find the sum of the second row:\n# \\( S = (n+2) + (2n-9) + 1 = 3n - 6 \\)\n\n# Since both expressions represent the same sum \\( S \\), we can set them equal to each other:\n# \\( 2n + 1 = 3n - 6 \\)\n# Solving for \\( n \\):\n# \\( 1 + 6 = 3n - 2n \\)\n# \\( 7 = n \\)\n\n# Now, let's verify that this value of \\( n \\) works for the other rows, columns, and diagonals. If \\( n = 7 \\), the magic square becomes:\n# | 4 | 3 | 8 |\n# | 9 | 5 | 1 |\n# | 2 | 7 | 6 |\n\n# Let's check the sums:\n# First row: \\( 4 + 3 + 8 = 15 \\)\n# Second row: \\( 9 + 5 + 1 = 15 \\)\n# Third row: \\( 2 + 7 + 6 = 15 \\)\n# First column: \\( 4 + 9 + 2 = 15 \\)\n# Second column: \\( 3 + 5 + 7 = 15 \\)\n# Third column: \\( 8 + 1 + 6 = 15 \\)\n# Main diagonal: \\( 4 + 5 + 6 = 15 \\)\n# Other diagonal: \\( 8 + 5 + 2 = 15 \\)\n\n# Since all the sums are equal to 15, the value of \\( n \\) is correct. Therefore, the value of \\( n \\) is:\n# \\(\\boxed{7}\\)\n```",
+          "ground_truth": "7"
+        },
+        {
+          "log_likelihood": -3.796152353286743,
+          "log_osb": -233780.96875,
+          "response_length": 195,
+          "generated_response": " To determine how many possible numbers Rick and Steve could be thinking of, we need to identify the common positive factors of 14 and 42. First, let's list the positive factors of each number.\n\nThe positive factors of 14 are:\n\\[1, 2, 7, 14\\]\n\nThe positive factors of 42 are:\n\\[1, 2, 3, 6, 7, 14, 21, 42\\]\n\nNext, we identify the common factors of 14 and 42 by finding the intersection of the two sets of factors:\n\\[1, 2, 7, 14\\]\n\nThe common factors are:\n\\[1, 2, 7, 14\\]\n\nThere are 4 common factors. Therefore, the number of possible numbers that Rick and Steve could be thinking of is:\n\\[\n\\boxed{4}\n\\]",
+          "ground_truth": "4"
+        },
+        {
+          "log_likelihood": -9.605655670166016,
+          "log_osb": -337889.8125,
+          "response_length": 291,
+          "generated_response": " To determine how far a car would travel at 50 miles per hour for \\(2\\frac{3}{4}\\) hours, follow these steps:\n\n1. **Convert the mixed number to an improper fraction:**\n   \n   \\[\n   2\\frac{3}{4} = \\frac{2 \\times 4 + 3}{4} = \\frac{11}{4} \\text{ hours}\n   \\]\n\n2. **Calculate the distance traveled:**\n   \n   \\[\n   \\text{Distance} = \\text{Speed} \\times \\text{Time} = 50 \\times \\frac{11}{4}\n   \\]\n   \n   \\[\n   50 \\times \\frac{11}{4} = \\frac{50 \\times 11}{4} = \\frac{550}{4}\n   \\]\n\n3. **Simplify the fraction:**\n   \n   \\[\n   \\frac{550}{4} = 137.5 \\text{ miles}\n   \\]\n   \n   Convert 137.5 to a mixed number:\n   \n   \\[\n   137.5 = 137\\frac{1}{2}\n   \\]\n\n4. **Final Answer:**\n   \n   \\[\n   \\boxed{137\\frac{1}{2}}\n   \\]",
+          "ground_truth": "137 \\frac{1}{2}"
+        },
+        {
+          "log_likelihood": -8.211129188537598,
+          "log_osb": -803462.375,
+          "response_length": 665,
+          "generated_response": " To determine the smallest positive integer \\( n \\) such that all the roots of the equation \\( z^4 + z^2 + 1 = 0 \\) are \\( n \\)-th roots of unity, we need to follow these steps:\n\n1. **Find the roots of the equation \\( z^4 + z^2 + 1 = 0 \\):**\n   Let \\( w = z^2 \\). Then the equation becomes:\n   \\[\n   w^2 + w + 1 = 0\n   \\]\n   The roots of this quadratic equation are:\n   \\[\n   w = \\frac{-1 \\pm \\sqrt{-3}}{2} = \\frac{-1 \\pm i\\sqrt{3}}{2}\n   \\]\n   So, \\( w = \\omega \\) or \\( w = \\omega^2 \\), where \\( \\omega = e^{2\\pi i / 3} \\) is a primitive 3rd root of unity. Therefore, we have:\n   \\[\n   z^2 = \\omega \\quad \\text{or} \\quad z^2 = \\omega^2\n   \\]\n   The roots of \\( z^2 = \\omega \\) are:\n   \\[\n   z = \\pm \\sqrt{\\omega} = \\pm \\omega^{1/2}\n   \\]\n   The roots of \\( z^2 = \\omega^2 \\) are:\n   \\[\n   z = \\pm \\sqrt{\\omega^2} = \\pm \\omega\n   \\]\n   So, the roots of the original equation \\( z^4 + z^2 + 1 = 0 \\) are:\n   \\[\n   z = \\omega^{1/2}, -\\omega^{1/2}, \\omega, -\\omega\n   \\]\n\n2. **Determine the order of the roots:**\n   The roots \\( \\omega \\) and \\( -\\omega \\) are 6th roots of unity because \\( \\omega = e^{2\\pi i / 3} \\) and \\( -\\omega = e^{4\\pi i / 3} \\), and both satisfy \\( \\omega^6 = 1 \\) and \\( (-\\omega)^6 = 1 \\). The roots \\( \\omega^{1/2} \\) and \\( -\\omega^{1/2} \\) are 12th roots of unity because \\( (\\omega^{1/2})^{12} = (\\omega^6)^2 = 1 \\) and \\( (-\\omega^{1/2})^{12} = ((-\\omega)^6)^2 = 1 \\).\n\n3. **Find the smallest \\( n \\) such that all roots are \\( n \\)-th roots of unity:**\n   The smallest \\( n \\) that is a multiple of both 6 and 12 is 12. Therefore, the smallest positive integer \\( n \\) such that all the roots of \\( z^4 + z^2 + 1 = 0 \\) are \\( n \\)-th roots of unity is:\n   \\[\n   \\boxed{12}\n   \\]",
+          "ground_truth": "6"
+        },
+        {
+          "log_likelihood": -6.4232635498046875,
+          "log_osb": -341660.3125,
+          "response_length": 277,
+          "generated_response": " To determine the side length of the regular octagon, we need to follow these steps:\n\n1. **Calculate the perimeter of the regular hexagon:**\n   - A regular hexagon has 6 sides, each of length 16 cm.\n   - The perimeter of the hexagon is given by:\n     \\[\n     \\text{Perimeter of hexagon} = 6 \\times 16 = 96 \\text{ cm}\n     \\]\n\n2. **Determine the side length of the regular octagon:**\n   - A regular octagon has 8 sides.\n   - Let the side length of the octagon be \\( s \\).\n   - The perimeter of the octagon is given by:\n     \\[\n     \\text{Perimeter of octagon} = 8s\n     \\]\n   - Since the perimeters of the hexagon and the octagon are equal, we set up the equation:\n     \\[\n     8s = 96\n     \\]\n\n3. **Solve for \\( s \\):**\n   - Divide both sides of the equation by 8:\n     \\[\n     s = \\frac{96}{8} = 12 \\text{ cm}\n     \\]\n\nTherefore, the side length of the regular octagon is \\(\\boxed{12}\\) cm.",
+          "ground_truth": "12"
+        },
+        {
+          "log_likelihood": -42.824195861816406,
+          "log_osb": -1000314.5,
+          "response_length": 856,
+          "generated_response": " To evaluate the sum \n\n\\[\nS = \\frac{1}{1 + \\omega} + \\frac{1}{1 + \\omega^2} + \\dots + \\frac{1}{1 + \\omega^{1997}},\n\\]\n\nwhere \\(\\omega^{1997} = 1\\) and \\(\\omega \\neq 1\\), we start by noting that \\(\\omega\\) is a primitive 1997th root of unity. This means that \\(\\omega\\) satisfies the equation \\(x^{1997} - 1 = 0\\) and \\(\\omega^k \\neq 1\\) for \\(1 \\leq k \\leq 1996\\).\n\nFirst, observe that \\(\\omega^{1997} = 1\\) implies \\(\\omega^{1998} = \\omega\\), \\(\\omega^{1999} = \\omega^2\\), and so on. Therefore, the terms in the sum repeat every 1997 terms. Specifically, we have:\n\n\\[\n\\omega^{1998} = \\omega, \\quad \\omega^{1999} = \\omega^2, \\quad \\ldots, \\quad \\omega^{1997 \\cdot k + r} = \\omega^r \\quad \\text{for} \\quad 0 \\leq r \\leq 1996.\n\\]\n\nThis means that the sum \\(S\\) can be rewritten as:\n\n\\[\nS = \\sum_{k=1}^{1997} \\frac{1}{1 + \\omega^k}.\n\\]\n\nSince \\(\\omega^{1997} = 1\\), the terms \\(\\omega^k\\) for \\(k = 1, 2, \\ldots, 1997\\) are all the 1997th roots of unity except 1. The sum of all 1997th roots of unity is zero, i.e.,\n\n\\[\n1 + \\omega + \\omega^2 + \\cdots + \\omega^{1996} = 0.\n\\]\n\nWe can use this fact to simplify our sum. Consider the polynomial \\(P(x) = x^{1997} - 1\\). The roots of this polynomial are \\(\\omega^k\\) for \\(k = 0, 1, 2, \\ldots, 1996\\). We can write:\n\n\\[\nP(x) = (x - 1)(x - \\omega)(x - \\omega^2) \\cdots (x - \\omega^{1996}).\n\\]\n\nNow, let's consider the function \\(f(x) = \\frac{1}{1 + x}\\). We need to evaluate the sum of \\(f(\\omega^k)\\) for \\(k = 1, 2, \\ldots, 1997\\). Notice that:\n\n\\[\nf(\\omega^k) = \\frac{1}{1 + \\omega^k}.\n\\]\n\nWe can use the fact that the sum of the residues of a function around the roots of a polynomial is related to the sum of the function evaluated at those roots. Specifically, if we consider the function \\(g(x) = \\frac{1}{1 + x}\\) and the polynomial \\(P(x) = x^{1997} - 1\\), we can use the residue theorem or properties of roots of unity to find that:\n\n\\[\n\\sum_{k=1}^{1997} \\frac{1}{1 + \\omega^k} = -\\frac{1}{2}.\n\\]\n\nThis is because the sum of the reciprocals of \\(1 + \\omega^k\\) for all 1997th roots of unity (excluding 1) is \\(-\\frac{1}{2}\\).\n\nTherefore, the value of the sum is:\n\n\\[\n\\boxed{-\\frac{1}{2}}.\n\\]",
+          "ground_truth": "\\frac{1997}{2}"
+        },
+        {
+          "log_likelihood": -8.344098091125488,
+          "log_osb": -527775.5,
+          "response_length": 425,
+          "generated_response": " To find \\(\\tan A\\) in the right triangle \\(ABC\\) with \\(\\angle B = 90^\\circ\\) and \\(\\sin A = 2 \\cos A\\), we can follow these steps:\n\n1. **Understand the given information:**\n   - We have a right triangle \\(ABC\\) with \\(\\angle B = 90^\\circ\\).\n   - \\(\\sin A = 2 \\cos A\\).\n\n2. **Recall the definitions of sine and cosine:**\n   - \\(\\sin A = \\frac{\\text{opposite}}{\\text{hypotenuse}}\\)\n   - \\(\\cos A = \\frac{\\text{adjacent}}{\\text{hypotenuse}}\\)\n\n3. **Express \\(\\sin A\\) and \\(\\cos A\\) in terms of the sides of the triangle:**\n   - Let the opposite side to \\(\\angle A\\) be \\(a\\), the adjacent side to \\(\\angle A\\) be \\(b\\), and the hypotenuse be \\(c\\).\n   - Then, \\(\\sin A = \\frac{a}{c}\\) and \\(\\cos A = \\frac{b}{c}\\).\n\n4. **Substitute these into the given equation:**\n   - \\(\\sin A = 2 \\cos A\\)\n   - \\(\\frac{a}{c} = 2 \\frac{b}{c}\\)\n\n5. **Simplify the equation:**\n   - \\(\\frac{a}{c} = 2 \\frac{b}{c}\\)\n   - \\(a = 2b\\)\n\n6. **Find \\(\\tan A\\):**\n   - \\(\\tan A = \\frac{\\text{opposite}}{\\text{adjacent}} = \\frac{a}{b}\\)\n   - Since \\(a = 2b\\), \\(\\tan A = \\frac{2b}{b} = 2\\)\n\nTherefore, the value of \\(\\tan A\\) is \\(\\boxed{2}\\).",
+          "ground_truth": "2"
+        },
+        {
+          "log_likelihood": -2.849036693572998,
+          "log_osb": -1012151.375,
+          "response_length": 834,
+          "generated_response": " To find the minimum value of the expression \\(\\frac{1}{a} + \\frac{1}{b} + \\frac{4}{c} + \\frac{16}{d}\\) given that \\(a + b + c + d = 1\\) and \\(a, b, c, d\\) are positive real numbers, we can use the method of Lagrange multipliers or the AM-HM inequality. Here, we will use the method of Lagrange multipliers.\n\nDefine the function \\( f(a, b, c, d) = \\frac{1}{a} + \\frac{1}{b} + \\frac{4}{c} + \\frac{16}{d} \\) and the constraint \\( g(a, b, c, d) = a + b + c + d - 1 = 0 \\).\n\nThe method of Lagrange multipliers tells us that at the minimum, the gradients of \\( f \\) and \\( g \\) must be proportional. That is, there exists a constant \\(\\lambda\\) such that:\n\\[\n\\nabla f = \\lambda \\nabla g\n\\]\nCalculating the gradients, we get:\n\\[\n\\nabla f = \\left( -\\frac{1}{a^2}, -\\frac{1}{b^2}, -\\frac{4}{c^2}, -\\frac{16}{d^2} \\right)\n\\]\n\\[\n\\nabla g = (1, 1, 1, 1)\n\\]\nSo, we have the system of equations:\n\\[\n-\\frac{1}{a^2} = \\lambda, \\quad -\\frac{1}{b^2} = \\lambda, \\quad -\\frac{4}{c^2} = \\lambda, \\quad -\\frac{16}{d^2} = \\lambda\n\\]\nThis implies:\n\\[\n\\frac{1}{a^2} = \\frac{1}{b^2} = \\frac{4}{c^2} = \\frac{16}{d^2}\n\\]\nFrom \\(\\frac{1}{a^2} = \\frac{1}{b^2}\\), we get \\(a = b\\).\nFrom \\(\\frac{1}{a^2} = \\frac{4}{c^2}\\), we get \\(c = 2a\\).\nFrom \\(\\frac{1}{a^2} = \\frac{16}{d^2}\\), we get \\(d = 4a\\).\n\nSubstituting \\(a = b\\), \\(c = 2a\\), and \\(d = 4a\\) into the constraint \\(a + b + c + d = 1\\), we get:\n\\[\na + a + 2a + 4a = 1 \\implies 8a = 1 \\implies a = \\frac{1}{8}\n\\]\nSo, \\(b = \\frac{1}{8}\\), \\(c = 2a = \\frac{1}{4}\\), and \\(d = 4a = \\frac{1}{2}\\).\n\nNow, we substitute these values back into the expression \\(\\frac{1}{a} + \\frac{1}{b} + \\frac{4}{c} + \\frac{16}{d}\\):\n\\[\n\\frac{1}{a} + \\frac{1}{b} + \\frac{4}{c} + \\frac{16}{d} = \\frac{1}{\\frac{1}{8}} + \\frac{1}{\\frac{1}{8}} + \\frac{4}{\\frac{1}{4}} + \\frac{16}{\\frac{1}{2}} = 8 + 8 + 16 + 32 = 64\n\\]\nTherefore, the minimum value is \\(\\boxed{64}\\).",
+          "ground_truth": "64"
+        },
+        {
+          "log_likelihood": -9.289397239685059,
+          "log_osb": -957573.9375,
+          "response_length": 836,
+          "generated_response": " To evaluate the expression:\n\n\\[\n\\sin (\\arcsin 0.4 + \\arcsin 0.5) \\cdot \\sin (\\arcsin 0.5 - \\arcsin 0.4),\n\\]\n\nwe can proceed step by step.\n\n### Step 1: Let\u2019s define the angles\nLet:\n\\[\n\\alpha = \\arcsin 0.4 \\quad \\text{and} \\quad \\beta = \\arcsin 0.5.\n\\]\nThis means:\n\\[\n\\sin \\alpha = 0.4 \\quad \\text{and} \\quad \\sin \\beta = 0.5.\n\\]\n\n### Step 2: Compute \\(\\cos \\alpha\\) and \\(\\cos \\beta\\)\nUsing the Pythagorean identity \\(\\cos^2 \\theta = 1 - \\sin^2 \\theta\\):\n\\[\n\\cos \\alpha = \\sqrt{1 - \\sin^2 \\alpha} = \\sqrt{1 - 0.4^2} = \\sqrt{1 - 0.16} = \\sqrt{0.84} = \\frac{\\sqrt{21}}{5},\n\\]\n\\[\n\\cos \\beta = \\sqrt{1 - \\sin^2 \\beta} = \\sqrt{1 - 0.5^2} = \\sqrt{1 - 0.25} = \\sqrt{0.75} = \\frac{\\sqrt{3}}{2}.\n\\]\n\n### Step 3: Compute \\(\\sin (\\alpha + \\beta)\\) and \\(\\sin (\\alpha - \\beta)\\)\nUsing the sine addition and subtraction formulas:\n\\[\n\\sin (\\alpha + \\beta) = \\sin \\alpha \\cos \\beta + \\cos \\alpha \\sin \\beta,\n\\]\n\\[\n\\sin (\\alpha - \\beta) = \\sin \\alpha \\cos \\beta - \\cos \\alpha \\sin \\beta.\n\\]\n\nSubstitute the known values:\n\\[\n\\sin (\\alpha + \\beta) = 0.4 \\cdot \\frac{\\sqrt{3}}{2} + \\frac{\\sqrt{21}}{5} \\cdot 0.5 = \\frac{0.4 \\sqrt{3}}{2} + \\frac{0.5 \\sqrt{21}}{5} = 0.2 \\sqrt{3} + 0.1 \\sqrt{21},\n\\]\n\\[\n\\sin (\\alpha - \\beta) = 0.4 \\cdot \\frac{\\sqrt{3}}{2} - \\frac{\\sqrt{21}}{5} \\cdot 0.5 = \\frac{0.4 \\sqrt{3}}{2} - \\frac{0.5 \\sqrt{21}}{5} = 0.2 \\sqrt{3} - 0.1 \\sqrt{21}.\n\\]\n\n### Step 4: Multiply the two results\nNow, multiply \\(\\sin (\\alpha + \\beta)\\) and \\(\\sin (\\alpha - \\beta)\\):\n\\[\n\\sin (\\alpha + \\beta) \\cdot \\sin (\\alpha - \\beta) = \\left(0.2 \\sqrt{3} + 0.1 \\sqrt{21}\\right) \\left(0.2 \\sqrt{3} - 0.1 \\sqrt{21}\\right).\n\\]\n\nThis is a difference of squares:\n\\[\n\\left(0.2 \\sqrt{3}\\right)^2 - \\left(0.1 \\sqrt{21}\\right)^2 = 0.04 \\cdot 3 - 0.01 \\cdot 21 = 0.12 - 0.21 = -0.09.\n\\]\n\n### Step 5: Final Answer\nThus, the value of the expression is:\n\\[\n\\boxed{-0.09}.\n\\]",
+          "ground_truth": "\\frac{9}{100}"
+        },
+        {
+          "log_likelihood": -9.023024559020996,
+          "log_osb": -519036.84375,
+          "response_length": 432,
+          "generated_response": " To rewrite the quadratic \\( x^2 + 2.6x + 3.6 \\) in the form \\( (x + b)^2 + c \\), we need to complete the square. Here are the steps:\n\n1. Start with the quadratic expression:\n   \\[\n   x^2 + 2.6x + 3.6\n   \\]\n\n2. To complete the square, we focus on the first two terms: \\( x^2 + 2.6x \\). We need to add and subtract the square of half the coefficient of \\( x \\). The coefficient of \\( x \\) is 2.6, so half of it is \\( 1.3 \\), and the square of \\( 1.3 \\) is \\( 1.69 \\).\n\n3. Add and subtract \\( 1.69 \\) inside the expression:\n   \\[\n   x^2 + 2.6x + 1.69 - 1.69 + 3.6\n   \\]\n\n4. Rewrite the expression by grouping the perfect square trinomial and the constants:\n   \\[\n   (x^2 + 2.6x + 1.69) + (3.6 - 1.69)\n   \\]\n\n5. Simplify the perfect square trinomial and the constants:\n   \\[\n   (x + 1.3)^2 + 1.91\n   \\]\n\nNow, the quadratic \\( x^2 + 2.6x + 3.6 \\) is written in the form \\( (x + 1.3)^2 + 1.91 \\). Here, \\( b = 1.3 \\) and \\( c = 1.91 \\).\n\n6. Calculate \\( b + c \\):\n   \\[\n   b + c = 1.3 + 1.91 = 3.21\n   \\]\n\nTherefore, the value of \\( b + c \\) is \\(\\boxed{3.21}\\).",
+          "ground_truth": "3.21"
+        }
+      ]
+    }
+  }
+}

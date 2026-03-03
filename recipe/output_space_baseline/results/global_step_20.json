@@ -1,0 +1,87 @@
+{
+  "label": "global_step_20",
+  "checkpoint": "checkpoints/antifragile_rl/qwen3-4b-base_numina_math_full_grpo_n8/global_step_20/actor",
+  "datasets": {
+    "test": {
+      "num_samples": 10,
+      "num_valid": 10,
+      "mean_response_length": 532.7,
+      "mean_log_likelihood": -28.25861873626709,
+      "mean_log_osb": -535140.72265625,
+      "mean_log_likelihood_per_token": -0.05304790451711486,
+      "mean_log_osb_per_token": -1004.5817958630561,
+      "per_sample": [
+        {
+          "log_likelihood": -44.61796569824219,
+          "log_osb": -271354.6875,
+          "response_length": 306,
+          "generated_response": " \u4e3a\u4e86\u627e\u5230 \\( n \\) \u7684\u503c\uff0c\u6211\u4eec\u9700\u8981\u5229\u7528\u9b54\u65b9\u9635\u7684\u6027\u8d28\uff0c\u5373\u6bcf\u4e00\u884c\u3001\u6bcf\u4e00\u5217\u4ee5\u53ca\u4e24\u6761\u4e3b\u5bf9\u89d2\u7ebf\u4e0a\u7684\u6570\u5b57\u4e4b\u548c\u90fd\u76f8\u7b49\u3002\u6211\u4eec\u53ef\u4ee5\u4ece\u7ed9\u5b9a\u7684\u77e9\u9635\u4e2d\u9009\u62e9\u4efb\u610f\u4e00\u884c\u6216\u4e00\u5217\u6765\u5efa\u7acb\u7b49\u5f0f\u3002\n\n\u6211\u4eec\u9009\u62e9\u7b2c\u4e00\u884c\u4f5c\u4e3a\u8d77\u70b9\uff0c\u5176\u5143\u7d20\u4e3a \\( n-3 \\), \\( 3 \\), \u548c \\( n+1 \\)\u3002\u56e0\u6b64\uff0c\u7b2c\u4e00\u884c\u7684\u548c\u53ef\u4ee5\u8868\u793a\u4e3a\uff1a\n\\[ (n-3) + 3 + (n+1) = 2n + 1 \\]\n\n\u7531\u4e8e\u8fd9\u662f\u4e00\u4e2a\u9b54\u65b9\u9635\uff0c\u6240\u6709\u884c\u7684\u548c\u5e94\u8be5\u76f8\u7b49\u3002\u6211\u4eec\u53ef\u4ee5\u7528\u7b2c\u4e8c\u884c\u6765\u9a8c\u8bc1\u8fd9\u4e2a\u548c\u3002\u7b2c\u4e8c\u884c\u7684\u5143\u7d20\u662f \\( n+2 \\), \\( 2n-9 \\), \u548c \\( 1 \\)\uff0c\u6240\u4ee5\u7b2c\u4e8c\u884c\u7684\u548c\u4e3a\uff1a\n\\[ (n+2) + (2n-9) + 1 = 3n - 6 \\]\n\n\u56e0\u4e3a\u8fd9\u4e24\u884c\u7684\u548c\u5fc5\u987b\u76f8\u7b49\uff0c\u6240\u4ee5\u6211\u4eec\u6709\uff1a\n\\[ 2n + 1 = 3n - 6 \\]\n\n\u89e3\u8fd9\u4e2a\u65b9\u7a0b\u4ee5\u627e\u5230 \\( n \\) \u7684\u503c\uff1a\n\\[ 2n + 1 = 3n - 6 \\]\n\\[ 1 + 6 = 3n - 2n \\]\n\\[ 7 = n \\]\n\n\u6240\u4ee5\uff0c\\( n \\) \u7684\u503c\u662f \\( 7 \\)\u3002\n\n\u6700\u7ec8\u7b54\u6848\u662f\uff1a\n\\[ \\boxed{7} \\]",
+          "ground_truth": "7"
+        },
+        {
+          "log_likelihood": -12.877641677856445,
+          "log_osb": -104836.0546875,
+          "response_length": 125,
+          "generated_response": " First, we need to find the common factors of 14 and 42. The factors of 14 are 1, 2, 7, and 14. The factors of 42 are 1, 2, 3, 6, 7, 14, 21, and 42. The common factors of 14 and 42 are 1, 2, 7, and 14. Therefore, there are 4 possible numbers that Rick and Steve could be thinking of. The answer is \\boxed{4}.",
+          "ground_truth": "4"
+        },
+        {
+          "log_likelihood": -11.384387969970703,
+          "log_osb": -307653.875,
+          "response_length": 310,
+          "generated_response": " To determine how far a car would travel at 50 miles per hour in \\(2\\frac{3}{4}\\) hours, we need to follow these steps:\n\n1. Convert the mixed number \\(2\\frac{3}{4}\\) to an improper fraction.\n2. Multiply the speed (50 miles per hour) by the time in hours.\n\nFirst, convert \\(2\\frac{3}{4}\\) to an improper fraction:\n\\[2\\frac{3}{4} = 2 + \\frac{3}{4} = \\frac{8}{4} + \\frac{3}{4} = \\frac{11}{4}\\]\n\nNow, multiply the speed by the time:\n\\[50 \\text{ miles per hour} \\times \\frac{11}{4} \\text{ hours} = 50 \\times \\frac{11}{4} = \\frac{50 \\times 11}{4} = \\frac{550}{4}\\]\n\nNext, simplify \\(\\frac{550}{4}\\):\n\\[\\frac{550}{4} = 137.5\\]\n\nConvert 137.5 to a mixed number:\n\\[137.5 = 137 \\frac{1}{2}\\]\n\nSo, the car would travel \\(\\boxed{137\\frac{1}{2}}\\) miles in \\(2\\frac{3}{4}\\) hours.",
+          "ground_truth": "137 \\frac{1}{2}"
+        },
+        {
+          "log_likelihood": -30.807750701904297,
+          "log_osb": -877894.9375,
+          "response_length": 818,
+          "generated_response": " To determine the smallest positive integer \\( n \\) such that all the roots of the equation \\( z^4 + z^2 + 1 = 0 \\) are \\( n \\)-th roots of unity, we start by solving the given equation.\n\nFirst, let's rewrite the equation:\n\\[ z^4 + z^2 + 1 = 0. \\]\n\nWe can make a substitution to simplify this equation. Let \\( w = z^2 \\). Then the equation becomes:\n\\[ w^2 + w + 1 = 0. \\]\n\nThis is a quadratic equation in \\( w \\). We solve it using the quadratic formula:\n\\[ w = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}, \\]\nwhere \\( a = 1 \\), \\( b = 1 \\), and \\( c = 1 \\). Plugging in these values, we get:\n\\[ w = \\frac{-1 \\pm \\sqrt{1^2 - 4 \\cdot 1 \\cdot 1}}{2 \\cdot 1} = \\frac{-1 \\pm \\sqrt{1 - 4}}{2} = \\frac{-1 \\pm \\sqrt{-3}}{2} = \\frac{-1 \\pm i\\sqrt{3}}{2}. \\]\n\nSo, the solutions for \\( w \\) are:\n\\[ w = \\frac{-1 + i\\sqrt{3}}{2} \\quad \\text{and} \\quad w = \\frac{-1 - i\\sqrt{3}}{2}. \\]\n\nRecall that \\( w = z^2 \\). Therefore, we need to find the square roots of these complex numbers to determine \\( z \\). The complex numbers \\( \\frac{-1 + i\\sqrt{3}}{2} \\) and \\( \\frac{-1 - i\\sqrt{3}}{2} \\) are the non-real cube roots of unity, specifically \\( \\omega \\) and \\( \\omega^2 \\), where \\( \\omega = e^{2\\pi i / 3} \\) and \\( \\omega^2 = e^{-2\\pi i / 3} \\).\n\nThe square roots of \\( \\omega \\) and \\( \\omega^2 \\) are the 6th roots of unity, specifically \\( \\omega^{1/2} \\) and \\( \\omega^{5/2} \\), which are \\( e^{i\\pi/3} \\) and \\( e^{5i\\pi/3} \\), respectively. Similarly, the square roots of \\( \\omega^2 \\) are \\( e^{i5\\pi/3} \\) and \\( e^{i\\pi/3} \\).\n\nThus, the roots of the original equation \\( z^4 + z^2 + 1 = 0 \\) are the 6th roots of unity, excluding 1 and -1. The 6th roots of unity are \\( e^{2k\\pi i / 6} \\) for \\( k = 0, 1, 2, 3, 4, 5 \\), which are \\( 1, e^{i\\pi/3}, e^{i2\\pi/3}, e^{i\\pi}, e^{i4\\pi/3}, e^{i5\\pi/3} \\). Excluding 1 and -1, we are left with \\( e^{i\\pi/3}, e^{i2\\pi/3}, e^{i4\\pi/3}, e^{i5\\pi/3} \\), which are indeed the 6th roots of unity.\n\nTherefore, the smallest positive integer \\( n \\) such that all the roots of \\( z^4 + z^2 + 1 = 0 \\) are \\( n \\)-th roots of unity is \\( \\boxed{6} \\).",
+          "ground_truth": "6"
+        },
+        {
+          "log_likelihood": -29.01736831665039,
+          "log_osb": -196272.421875,
+          "response_length": 210,
+          "generated_response": " ```python\n# First, we need to calculate the perimeter of the hexagon.\n# A regular hexagon has 6 sides, each of length 16 cm.\nhexagon_side_length = 16\nhexagon_perimeter = 6 * hexagon_side_length\n\n# Now, we know that the perimeter of the octagon is the same as the perimeter of the hexagon.\n# A regular octagon has 8 sides. Let's denote the side length of the octagon by `x`.\n# The perimeter of the octagon is then 8 * x.\n# We set the perimeter of the octagon equal to the perimeter of the hexagon and solve for x.\noctagon_perimeter = hexagon_perimeter\noctagon_side_length = octagon_perimeter / 8\n\n# The side length of the octagon is:\nprint(octagon_side_length)\n```\n```output\n12.0\n```\nThe side length of the octagon is \\(\\boxed{12}\\) cm.",
+          "ground_truth": "12"
+        },
+        {
+          "log_likelihood": -37.51526641845703,
+          "log_osb": -727421.9375,
+          "response_length": 731,
+          "generated_response": " To solve the problem, we start by noting that \\(\\omega\\) is a 1997th root of unity, meaning \\(\\omega^{1997} = 1\\) and \\(\\omega \\neq 1\\). The roots of unity are the solutions to the equation \\(x^{1997} - 1 = 0\\). These roots are \\(1, \\omega, \\omega^2, \\ldots, \\omega^{1996}\\).\n\nWe need to evaluate the sum:\n\\[\n\\frac{1}{1 + \\omega} + \\frac{1}{1 + \\omega^2} + \\dots + \\frac{1}{1 + \\omega^{1997}}.\n\\]\nSince \\(\\omega^{1997} = 1\\), the term \\(\\frac{1}{1 + \\omega^{1997}}\\) is simply \\(\\frac{1}{1 + 1} = \\frac{1}{2}\\). Therefore, the sum can be rewritten as:\n\\[\n\\frac{1}{1 + \\omega} + \\frac{1}{1 + \\omega^2} + \\dots + \\frac{1}{1 + \\omega^{1996}} + \\frac{1}{2}.\n\\]\n\nNext, we consider the polynomial \\(P(x) = x^{1997} - 1\\). The roots of this polynomial are \\(1, \\omega, \\omega^2, \\ldots, \\omega^{1996}\\). The polynomial can be factored as:\n\\[\nP(x) = (x-1)(x-\\omega)(x-\\omega^2) \\cdots (x-\\omega^{1996}).\n\\]\nIf we substitute \\(x = -1\\) into this polynomial, we get:\n\\[\n(-1)^{1997} - 1 = ( -1 - 1)( -1 - \\omega)( -1 - \\omega^2) \\cdots ( -1 - \\omega^{1996}).\n\\]\nThis simplifies to:\n\\[\n-2 = (-2)( -1 - \\omega)( -1 - \\omega^2) \\cdots ( -1 - \\omega^{1996}).\n\\]\nDividing both sides by \\(-2\\), we get:\n\\[\n1 = (1 + \\omega)(1 + \\omega^2) \\cdots (1 + \\omega^{1996}).\n\\]\nTaking the reciprocal of both sides, we have:\n\\[\n\\frac{1}{1 + \\omega} + \\frac{1}{1 + \\omega^2} + \\dots + \\frac{1}{1 + \\omega^{1996}} = \\frac{1996}{2} = 998.\n\\]\nAdding the term \\(\\frac{1}{2}\\) to this sum, we get:\n\\[\n\\frac{1}{1 + \\omega} + \\frac{1}{1 + \\omega^2} + \\dots + \\frac{1}{1 + \\omega^{1996}} + \\frac{1}{2} = 998 + \\frac{1}{2} = \\frac{1997}{2}.\n\\]\nTherefore, the final answer is:\n\\[\n\\boxed{\\frac{1997}{2}}.\n\\]",
+          "ground_truth": "\\frac{1997}{2}"
+        },
+        {
+          "log_likelihood": -23.03156280517578,
+          "log_osb": -341081.125,
+          "response_length": 341,
+          "generated_response": " ```plaintext\nIn the right triangle \\(ABC\\) with \\(\\angle B = 90^\\circ\\), we are given that \\(\\sin A = 2 \\cos A\\). We need to find \\(\\tan A\\).\n\nFirst, recall the definitions of \\(\\sin A\\) and \\(\\cos A\\) in terms of the sides of the triangle:\n\\[\n\\sin A = \\frac{\\text{opposite}}{\\text{hypotenuse}} \\quad \\text{and} \\quad \\cos A = \\frac{\\text{adjacent}}{\\text{hypotenuse}}\n\\]\nGiven \\(\\sin A = 2 \\cos A\\), we can write:\n\\[\n\\frac{\\text{opposite}}{\\text{hypotenuse}} = 2 \\cdot \\frac{\\text{adjacent}}{\\text{hypotenuse}}\n\\]\nThis simplifies to:\n\\[\n\\text{opposite} = 2 \\cdot \\text{adjacent}\n\\]\nLet's denote the opposite side by \\(a\\) and the adjacent side by \\(b\\). Then we have:\n\\[\na = 2b\n\\]\nThe tangent of angle \\(A\\) is defined as:\n\\[\n\\tan A = \\frac{\\text{opposite}}{\\text{adjacent}} = \\frac{a}{b}\n\\]\nSubstituting \\(a = 2b\\) into the tangent formula, we get:\n\\[\n\\tan A = \\frac{2b}{b} = 2\n\\]\nTherefore, the value of \\(\\tan A\\) is:\n\\[\n\\boxed{2}\n\\]",
+          "ground_truth": "2"
+        },
+        {
+          "log_likelihood": -32.3662109375,
+          "log_osb": -1045949.3125,
+          "response_length": 1001,
+          "generated_response": " To find the minimum value of the expression \\(\\frac{1}{a} + \\frac{1}{b} + \\frac{4}{c} + \\frac{16}{d}\\) given that \\(a + b + c + d = 1\\) and \\(a, b, c, d\\) are positive real numbers, we can use the method of Lagrange multipliers or the AM-HM inequality. Here, we will use the AM-HM inequality for simplicity.\n\nThe AM-HM inequality states that for any positive real numbers \\(x_1, x_2, \\ldots, x_n\\),\n\n\\[\n\\frac{x_1 + x_2 + \\cdots + x_n}{n} \\geq \\frac{n}{\\frac{1}{x_1} + \\frac{1}{x_2} + \\cdots + \\frac{1}{x_n}}.\n\\]\n\nApplying the AM-HM inequality to the terms \\(\\frac{1}{a}, \\frac{1}{b}, \\frac{4}{c}, \\frac{16}{d}\\), we get\n\n\\[\n\\frac{\\frac{1}{a} + \\frac{1}{b} + \\frac{4}{c} + \\frac{16}{d}}{4} \\geq \\frac{4}{a + \\frac{b}{4} + \\frac{c}{4} + \\frac{d}{16}}.\n\\]\n\nTo simplify the right-hand side, we need to find a common denominator for the terms in the denominator of the right-hand side. The common denominator is 16, so we have\n\n\\[\na + \\frac{b}{4} + \\frac{c}{4} + \\frac{d}{16} = \\frac{16a + 4b + 4c + d}{16}.\n\\]\n\nThus, the inequality becomes\n\n\\[\n\\frac{\\frac{1}{a} + \\frac{1}{b} + \\frac{4}{c} + \\frac{16}{d}}{4} \\geq \\frac{4 \\cdot 16}{16a + 4b + 4c + d} = \\frac{64}{16a + 4b + 4c + d}.\n\\]\n\nSince \\(a + b + c + d = 1\\), we can substitute \\(1\\) for \\(a + b + c + d\\) in the numerator of the right-hand side, but we need to express it in terms of \\(a, b, c, d\\). To find the equality condition, we need to check when the equality in the AM-HM inequality holds, which is when \\(\\frac{1}{a} = \\frac{1}{b} = \\frac{4}{c} = \\frac{16}{d}\\).\n\nLet's set \\(\\frac{1}{a} = \\frac{1}{b} = \\frac{4}{c} = \\frac{16}{d} = k\\). Then we have \\(a = \\frac{1}{k}\\), \\(b = \\frac{1}{k}\\), \\(c = \\frac{4}{k}\\), and \\(d = \\frac{16}{k}\\). Substituting these into the constraint \\(a + b + c + d = 1\\), we get\n\n\\[\n\\frac{1}{k} + \\frac{1}{k} + \\frac{4}{k} + \\frac{16}{k} = 1 \\implies \\frac{22}{k} = 1 \\implies k = 22.\n\\]\n\nThus, \\(a = \\frac{1}{22}\\), \\(b = \\frac{1}{22}\\), \\(c = \\frac{4}{22} = \\frac{2}{11}\\), and \\(d = \\frac{16}{22} = \\frac{8}{11}\\). Substituting these values back into the expression \\(\\frac{1}{a} + \\frac{1}{b} + \\frac{4}{c} + \\frac{16}{d}\\), we get\n\n\\[\n\\frac{1}{\\frac{1}{22}} + \\frac{1}{\\frac{1}{22}} + \\frac{4}{\\frac{2}{11}} + \\frac{16}{\\frac{8}{11}} = 22 + 22 + 22 + 22 = 88.\n\\]\n\nTherefore, the minimum value of the expression is \\(\\boxed{88}\\).",
+          "ground_truth": "64"
+        },
+        {
+          "log_likelihood": -47.41236114501953,
+          "log_osb": -1107055.875,
+          "response_length": 1109,
+          "generated_response": " To evaluate the expression:\n\n\\[\n\\sin (\\arcsin 0.4 + \\arcsin 0.5) \\cdot \\sin (\\arcsin 0.5 - \\arcsin 0.4),\n\\]\n\nwe can proceed step by step.\n\n### Step 1: Let\u2019s define the angles\nLet:\n\\[\n\\alpha = \\arcsin 0.4 \\quad \\text{and} \\quad \\beta = \\arcsin 0.5.\n\\]\nThis means:\n\\[\n\\sin \\alpha = 0.4 \\quad \\text{and} \\quad \\sin \\beta = 0.5.\n\\]\n\n### Step 2: Express the original expression in terms of \\(\\alpha\\) and \\(\\beta\\)\nThe expression becomes:\n\\[\n\\sin (\\alpha + \\beta) \\cdot \\sin (\\beta - \\alpha).\n\\]\n\n### Step 3: Use trigonometric identities\nRecall the identities:\n\\[\n\\sin (\\alpha + \\beta) = \\sin \\alpha \\cos \\beta + \\cos \\alpha \\sin \\beta,\n\\]\n\\[\n\\sin (\\beta - \\alpha) = \\sin \\beta \\cos \\alpha - \\cos \\beta \\sin \\alpha.\n\\]\nSubstituting these into the expression:\n\\[\n\\sin (\\alpha + \\beta) \\cdot \\sin (\\beta - \\alpha) = (\\sin \\alpha \\cos \\beta + \\cos \\alpha \\sin \\beta)(\\sin \\beta \\cos \\alpha - \\cos \\beta \\sin \\alpha).\n\\]\n\n### Step 4: Simplify the expression\nLet\u2019s expand the product:\n\\[\n(\\sin \\alpha \\cos \\beta + \\cos \\alpha \\sin \\beta)(\\sin \\beta \\cos \\alpha - \\cos \\beta \\sin \\alpha).\n\\]\nThis is of the form \\((a + b)(b - a)\\), which simplifies to:\n\\[\na b - a^2 - b^2 + a b = 2 a b - a^2 - b^2.\n\\]\nSubstituting back:\n\\[\n2 \\sin \\alpha \\sin \\beta \\cos \\alpha \\cos \\beta - \\sin^2 \\alpha \\cos^2 \\beta - \\cos^2 \\alpha \\sin^2 \\beta.\n\\]\n\n### Step 5: Substitute the known values\nWe know:\n\\[\n\\sin \\alpha = 0.4 \\quad \\text{and} \\quad \\sin \\beta = 0.5.\n\\]\nUsing the Pythagorean identity:\n\\[\n\\cos \\alpha = \\sqrt{1 - \\sin^2 \\alpha} = \\sqrt{1 - 0.16} = \\sqrt{0.84},\n\\]\n\\[\n\\cos \\beta = \\sqrt{1 - \\sin^2 \\beta} = \\sqrt{1 - 0.25} = \\sqrt{0.75}.\n\\]\nNow substitute these values into the expression:\n\\[\n2 \\cdot 0.4 \\cdot 0.5 \\cdot \\sqrt{0.84} \\cdot \\sqrt{0.75} - (0.4)^2 (\\sqrt{0.75})^2 - (\\sqrt{0.84})^2 (0.5)^2.\n\\]\nSimplify each term:\n\\[\n2 \\cdot 0.2 \\cdot \\sqrt{0.84 \\cdot 0.75} - 0.16 \\cdot 0.75 - 0.84 \\cdot 0.25.\n\\]\nCalculate the numerical values:\n\\[\n0.4 \\cdot \\sqrt{0.63} - 0.12 - 0.21.\n\\]\nSince \\(\\sqrt{0.63} = \\sqrt{\\frac{63}{100}} = \\frac{\\sqrt{63}}{10}\\), we have:\n\\[\n0.4 \\cdot \\frac{\\sqrt{63}}{10} - 0.12 - 0.21 = \\frac{0.4 \\sqrt{63}}{10} - 0.33.\n\\]\nSimplify further:\n\\[\n\\frac{\\sqrt{63}}{25} - 0.33.\n\\]\nSince \\(\\sqrt{63} = \\sqrt{9 \\cdot 7} = 3 \\sqrt{7}\\), we have:\n\\[\n\\frac{3 \\sqrt{7}}{25} - 0.33.\n\\]\nThis expression is approximately:\n\\[\n\\frac{3 \\cdot 2.6458}{25} - 0.33 \\approx \\frac{7.9374}{25} - 0.33 \\approx 0.3175 - 0.33 \\approx -0.0125.\n\\]\n\n### Step 6: Final Answer\nThe value of the expression is approximately \\(-0.0125\\). Therefore, the final answer is:\n\n\\[\n\\boxed{-0.0125}\n\\]",
+          "ground_truth": "\\frac{9}{100}"
+        },
+        {
+          "log_likelihood": -13.555671691894531,
+          "log_osb": -371887.0,
+          "response_length": 376,
+          "generated_response": " To express the quadratic \\( x^2 + 2.6x + 3.6 \\) in the form \\( (x + b)^2 + c \\), we'll complete the square step by step.\n\n1. **Start with the given quadratic:**\n   \\[\n   x^2 + 2.6x + 3.6\n   \\]\n\n2. **Complete the square for the quadratic and linear terms:**\n   - Take the coefficient of \\( x \\), which is \\( 2.6 \\), divide it by 2, and square it:\n     \\[\n     \\left(\\frac{2.6}{2}\\right)^2 = (1.3)^2 = 1.69\n     \\]\n   - Add and subtract this value inside the quadratic:\n     \\[\n     x^2 + 2.6x + 1.69 - 1.69 + 3.6\n     \\]\n\n3. **Rewrite the expression by grouping the perfect square trinomial and combining the constants:**\n   \\[\n   (x^2 + 2.6x + 1.69) + (3.6 - 1.69)\n   \\]\n   \\[\n   (x + 1.3)^2 + 1.91\n   \\]\n\n4. **Identify \\( b \\) and \\( c \\):**\n   - Here, \\( b = 1.3 \\) and \\( c = 1.91 \\).\n\n5. **Calculate \\( b + c \\):**\n   \\[\n   b + c = 1.3 + 1.91 = 3.21\n   \\]\n\nTherefore, the final answer is:\n\\[\n\\boxed{3.21}\n\\]",
+          "ground_truth": "3.21"
+        }
+      ]
+    }
+  }
+}
