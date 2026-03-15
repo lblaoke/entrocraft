@@ -188,6 +188,7 @@ def compute_advantage(
     num_repeat: int = 1,
     norm_adv_by_std_in_grpo: bool = True,
     config: Optional[AlgoConfig] = None,
+    total_steps: Optional[int] = None,
 ) -> DataProto:
     """Compute advantage estimates for policy optimization.
 
@@ -204,14 +205,95 @@ def compute_advantage(
         norm_adv_by_std_in_grpo (bool, optional): Whether to normalize advantages by standard deviation in
             GRPO. Defaults to True.
         config (dict, optional): Configuration dictionary for algorithm settings. Defaults to None.
+        total_steps (int, optional): Total training steps, used by schedulable estimators like GRPO_RANGE_LINEAR. Defaults to None.
     Returns:
         DataProto: The updated data with computed advantages and returns.
     """
     # Back-compatible with trainers that do not compute response mask in fit
     if "response_mask" not in data.batch.keys():
         data.batch["response_mask"] = compute_response_mask(data)
+
     # prepare response group
-    if adv_estimator == AdvantageEstimator.GAE:
+    if adv_estimator == AdvantageEstimator.GRPO:
+        # Initialize the mask for GRPO calculation
+        grpo_calculation_mask = data.batch["response_mask"]
+
+        # Call compute_grpo_outcome_advantage with parameters matching its definition
+        advantages, returns = core_algos.compute_grpo_outcome_advantage(
+            token_level_rewards=data.batch["token_level_rewards"],
+            response_mask=grpo_calculation_mask,
+            index=data.non_tensor_batch["uid"],
+            norm_adv_by_std_in_grpo=norm_adv_by_std_in_grpo,
+        )
+        data.batch["advantages"] = advantages
+        data.batch["returns"] = returns
+
+    elif adv_estimator == AdvantageEstimator.RAFTPP:
+        advantages, returns = core_algos.compute_raftpp_outcome_advantage(
+            token_level_rewards=data.batch['token_level_rewards'],
+            response_mask=data.batch['response_mask'])
+        data.batch['advantages'] = advantages
+        data.batch['returns'] = returns
+
+    elif adv_estimator == AdvantageEstimator.GRPO_RANGE:
+        advantages, returns = core_algos.compute_grpo_range_outcome_advantage(
+            token_level_rewards=data.batch['token_level_rewards'],
+            response_mask=data.batch['response_mask'],
+            step=global_steps,
+            current_entropy=data.non_tensor_batch['current_entropy'][0],
+            entropy_lower_bound=config.entropy_control.get("entropy_lower_bound", 0.0),
+            entropy_upper_bound=config.entropy_control.get("entropy_upper_bound", 1.0),
+            index=data.non_tensor_batch['uid'])
+        data.batch['advantages'] = advantages
+        data.batch['returns'] = returns
+
+    elif adv_estimator == AdvantageEstimator.GRPO_RANGE_LINEAR:
+        advantages, returns = core_algos.compute_grpo_range_linear_outcome_advantage(
+            token_level_rewards=data.batch['token_level_rewards'],
+            response_mask=data.batch['response_mask'],
+            step=global_steps,
+            total_steps=total_steps,
+            current_entropy=data.non_tensor_batch['current_entropy'][0],
+            entropy_lower_bound_range=config.entropy_control.get("entropy_lower_bound_range", (1.0, 1.0)),
+            entropy_upper_bound_range=config.entropy_control.get("entropy_upper_bound_range", (0.0, 0.0)),
+            index=data.non_tensor_batch['uid'])
+        data.batch['advantages'] = advantages
+        data.batch['returns'] = returns
+
+    elif adv_estimator == AdvantageEstimator.NSR:
+        advantages, returns = core_algos.compute_nsr_outcome_advantage(
+            token_level_rewards=data.batch['token_level_rewards'],
+            response_mask=data.batch['response_mask'])
+        data.batch['advantages'] = advantages
+        data.batch['returns'] = returns
+
+    elif adv_estimator == AdvantageEstimator.W_REINFORCE:
+        advantages, returns = core_algos.compute_w_reinforce_outcome_advantage(
+            token_level_rewards=data.batch['token_level_rewards'],
+            response_mask=data.batch['response_mask'])
+        data.batch['advantages'] = advantages
+        data.batch['returns'] = returns
+
+    elif adv_estimator == AdvantageEstimator.ENTROPIC:
+        if 'last_alpha' not in data.non_tensor_batch:
+            data.non_tensor_batch['last_alpha'] = np.array([0.])
+
+        print(f"last_alpha: {data.non_tensor_batch['last_alpha']}")
+
+        advantages, returns, last_alpha = core_algos.compute_entropic_outcome_advantage(
+            token_level_rewards=data.batch['token_level_rewards'],
+            response_mask=data.batch['response_mask'],
+            current_entropy=data.non_tensor_batch['current_entropy'][0],
+            target_entropy=config.entropy_control.get('fixed_entropy', 0.0),
+            last_alpha=float(data.non_tensor_batch['last_alpha'][0]))
+        data.batch['advantages'] = advantages
+        data.batch['returns'] = returns
+        data.non_tensor_batch['last_alpha'] = np.array([float(last_alpha)])
+
+        # report last_alpha to wandb
+
+    # Below are the default advantage estimators in the original VerL codebase.
+    elif adv_estimator == AdvantageEstimator.GAE:
         # Compute advantages and returns using Generalized Advantage Estimation (GAE)
         advantages, returns = core_algos.compute_gae_advantage_return(
             token_level_rewards=data.batch["token_level_rewards"],
@@ -228,60 +310,7 @@ def compute_advantage(
                 config.pf_ppo.get("reweight_method"),
                 config.pf_ppo.get("weight_pow"),
             )
-    elif adv_estimator == AdvantageEstimator.GRPO:
-        # Initialize the mask for GRPO calculation
-        grpo_calculation_mask = data.batch["response_mask"]
 
-        # Call compute_grpo_outcome_advantage with parameters matching its definition
-        advantages, returns = core_algos.compute_grpo_outcome_advantage(
-            token_level_rewards=data.batch["token_level_rewards"],
-            response_mask=grpo_calculation_mask,
-            index=data.non_tensor_batch["uid"],
-            norm_adv_by_std_in_grpo=norm_adv_by_std_in_grpo,
-        )
-        data.batch["advantages"] = advantages
-        data.batch["returns"] = returns
-    elif adv_estimator == AdvantageEstimator.RAFT_PLUS_PLUS:
-        advantages, returns = core_algos.compute_raft_outcome_advantage(
-            token_level_rewards=data.batch['token_level_rewards'],
-            response_mask=data.batch['response_mask'])
-        data.batch['advantages'] = advantages
-        data.batch['returns'] = returns
-    elif adv_estimator == AdvantageEstimator.NSR:
-        advantages, returns = core_algos.compute_nsr_outcome_advantage(
-            token_level_rewards=data.batch['token_level_rewards'],
-            response_mask=data.batch['response_mask'])
-        data.batch['advantages'] = advantages
-        data.batch['returns'] = returns
-    elif adv_estimator == AdvantageEstimator.GRPO_NSR:
-        advantages, returns = core_algos.compute_grpo_nsr_outcome_advantage(
-            token_level_rewards=data.batch['token_level_rewards'],
-            response_mask=data.batch['response_mask'],
-            step=global_steps,
-            frequency=config.entropy_control.get("frequency", 100000),
-            index=data.non_tensor_batch['uid'])
-        data.batch['advantages'] = advantages
-        data.batch['returns'] = returns
-    elif adv_estimator == AdvantageEstimator.GRPO_RANGE:
-        advantages, returns = core_algos.compute_grpo_range_outcome_advantage(
-            token_level_rewards=data.batch['token_level_rewards'],
-            response_mask=data.batch['response_mask'],
-            step=global_steps,
-            current_entropy=data.non_tensor_batch['current_entropy'][0],
-            entropy_lower_bound=config.entropy_control.get("entropy_lower_bound", 0.0),
-            entropy_upper_bound=config.entropy_control.get("entropy_upper_bound", 1.0),
-            index=data.non_tensor_batch['uid'])
-        data.batch['advantages'] = advantages
-        data.batch['returns'] = returns
-    elif adv_estimator == AdvantageEstimator.RAFTPP_NSR:
-        advantages, returns = core_algos.compute_raftpp_nsr_outcome_advantage(
-            token_level_rewards=data.batch['token_level_rewards'],
-            response_mask=data.batch['response_mask'],
-            step=global_steps,
-            frequency=config.entropy_control.get("frequency", 100000),
-            index=data.non_tensor_batch['uid'])
-        data.batch['advantages'] = advantages
-        data.batch['returns'] = returns
     else:
         # handle all other adv estimator type other than GAE and GRPO
         adv_estimator_fn = core_algos.get_adv_estimator_fn(adv_estimator)
@@ -380,6 +409,9 @@ class RayPPOTrainer:
         # kl loss control currently not suppoorted
         if self.config.algorithm.use_kl_in_reward:
             self.kl_ctrl_in_reward = core_algos.get_kl_controller(self.config.algorithm.kl_ctrl)
+
+        # persistent state for ENTROPIC advantage estimator's integral controller
+        self._last_alpha = 0.
 
         self._create_dataloader(train_dataset, val_dataset, collate_fn, train_sampler)
 
@@ -1299,17 +1331,8 @@ class RayPPOTrainer:
                             "norm_adv_by_std_in_grpo", True
                         )  # GRPO adv normalization factor
 
-                        # # Apply rejection sampling if enabled
-                        # len_filter_keep_fraction = self.config.actor_rollout_ref.rollout.get("length_filter_keep_fraction", 1.0)
-                        # r_var_filter_keep_fraction = self.config.actor_rollout_ref.rollout.get("r_var_filter_keep_fraction", 1.0)
-                        # assert len_filter_keep_fraction >= 0.0 and r_var_filter_keep_fraction >= 0.0, "filter keep fraction must be >= 0.0"
-                        # assert len_filter_keep_fraction <= 1.0 and r_var_filter_keep_fraction <= 1.0, "filter keep fraction must be <= 1.0"
-                        # assert not (len_filter_keep_fraction < 1.0 and r_var_filter_keep_fraction < 1.0), "only one filter can be enabled"
-
-                        # if len_filter_keep_fraction < 1.0:
-                        #     batch = self._filter_rollout_by_length(batch, len_filter_keep_fraction, metrics)
-                        # elif r_var_filter_keep_fraction < 1.0:
-                        #     batch = self._filter_rollout_by_r_var(batch, r_var_filter_keep_fraction, metrics)
+                        if self.config.algorithm.adv_estimator == AdvantageEstimator.ENTROPIC:
+                            batch.non_tensor_batch['last_alpha'] = np.array([self._last_alpha])
 
                         batch = compute_advantage(
                             batch,
@@ -1320,7 +1343,12 @@ class RayPPOTrainer:
                             num_repeat=self.config.actor_rollout_ref.rollout.n,
                             norm_adv_by_std_in_grpo=norm_adv_by_std_in_grpo,
                             config=self.config.algorithm,
+                            total_steps=self.total_training_steps,
                         )
+
+                        if 'last_alpha' in batch.non_tensor_batch:
+                            self._last_alpha = float(batch.non_tensor_batch.pop('last_alpha'))
+                            metrics['algorithm/entropic_alpha'] = self._last_alpha
 
                         resp_mask = batch.batch["response_mask"]
                         old_lp = batch.batch["old_log_probs"]

@@ -94,13 +94,17 @@ class AdvantageEstimator(str, Enum):
     estimator instead.
     """
 
-    GAE = "gae"
+    RAFTPP = "raftpp"
+
     GRPO = "grpo"
-    RAFT_PLUS_PLUS = "raftpp"
-    NSR = "nsr"
-    GRPO_NSR = "grpo_nsr"
     GRPO_RANGE = "grpo_range"
-    RAFTPP_NSR = "raftpp_nsr"
+    GRPO_RANGE_LINEAR = "grpo_range_linear"
+
+    NSR = "nsr"
+    W_REINFORCE = "w_reinforce"
+    ENTROPIC = "entropic"
+
+    GAE = "gae"
     REINFORCE_PLUS_PLUS = "reinforce_plus_plus"
     REINFORCE_PLUS_PLUS_BASELINE = "reinforce_plus_plus_baseline"
     REMAX = "remax"
@@ -212,59 +216,10 @@ def get_kl_controller(kl_ctrl):
         raise NotImplementedError
 
 
-@register_adv_est(AdvantageEstimator.GAE)  # or simply: @register_adv_est("gae")
-def compute_gae_advantage_return(
-    token_level_rewards: torch.Tensor,
-    values: torch.Tensor,
-    response_mask: torch.Tensor,
-    gamma: torch.Tensor,
-    lam: torch.Tensor,
-):
-    """Adapted from https://github.com/huggingface/trl/blob/main/trl/trainer/ppo_trainer.py
+# Below are the implemented advantage estimators as used in the paper.
 
-    Args:
-        token_level_rewards: `(torch.Tensor)`
-            shape is (bs, response_length)
-        values: `(torch.Tensor)`
-            shape is (bs, response_length)
-        response_mask: `(torch.Tensor)`
-            shape is (bs, response_length). [EOS] mask. The token after [EOS] have mask zero.
-        gamma is `(float)`
-            discounted factor used in RL
-        lam: `(float)`
-            lambda value when computing Generalized Advantage Estimation (https://arxiv.org/abs/1506.02438)
-
-    Returns:
-        advantages: `(torch.Tensor)`
-            shape: (bs, response_length)
-        Returns: `(torch.Tensor)`
-            shape: (bs, response_length)
-
-    """
-    with torch.no_grad():
-        nextvalues = 0
-        lastgaelam = 0
-        advantages_reversed = []
-        gen_len = token_level_rewards.shape[-1]
-
-        for t in reversed(range(gen_len)):
-            delta = token_level_rewards[:, t] + gamma * nextvalues - values[:, t]
-            lastgaelam_ = delta + gamma * lam * lastgaelam
-
-            # skip values and TD-error on observation tokens
-            nextvalues = values[:, t] * response_mask[:, t] + (1 - response_mask[:, t]) * nextvalues
-            lastgaelam = lastgaelam_ * response_mask[:, t] + (1 - response_mask[:, t]) * lastgaelam
-
-            advantages_reversed.append(lastgaelam)
-        advantages = torch.stack(advantages_reversed[::-1], dim=1)
-
-        returns = advantages + values
-        advantages = verl_F.masked_whiten(advantages, response_mask)
-    return advantages, returns
-
-
-@register_adv_est(AdvantageEstimator.RAFT_PLUS_PLUS)
-def compute_raft_outcome_advantage(
+@register_adv_est(AdvantageEstimator.RAFTPP)
+def compute_raftpp_outcome_advantage(
     token_level_rewards: torch.Tensor,
     response_mask: torch.Tensor,
     config: Optional[AlgoConfig] = None,
@@ -293,24 +248,6 @@ def compute_raft_outcome_advantage(
 
     return advantages, scores.unsqueeze(-1)
 
-@register_adv_est(AdvantageEstimator.NSR)
-def compute_nsr_outcome_advantage(
-    token_level_rewards: torch.Tensor,
-    response_mask: torch.Tensor,
-    config: Optional[AlgoConfig] = None,
-):
-    """
-    Compute advantage for NSR, operating only on Outcome reward 
-    (with only one scalar reward for each response).
-    """
-    scores = token_level_rewards.sum(dim=-1)
-
-    with torch.no_grad():
-        advantages = scores.clone()
-        advantages[advantages>0.] = 0.
-        advantages = advantages.unsqueeze(-1) * response_mask
-
-    return advantages, scores.unsqueeze(-1)
 
 # NOTE(sgm): this implementation only consider outcome supervision, where the reward is a scalar.
 @register_adv_est(AdvantageEstimator.GRPO)  # or simply: @register_adv_est("grpo")
@@ -380,46 +317,10 @@ def compute_grpo_outcome_advantage(
     return scores, scores
 
 
-@register_adv_est(AdvantageEstimator.GRPO_NSR)
-def compute_grpo_nsr_outcome_advantage(
-    token_level_rewards: torch.Tensor,
-    response_mask: torch.Tensor,
-    step: int,
-    frequency: int,
-    index: np.ndarray,
-    epsilon: float = 1e-6,
-    norm_adv_by_std_in_grpo: bool = True,
-    config: Optional[AlgoConfig] = None,
-) -> tuple[torch.Tensor, torch.Tensor]:
-    """
-    Compute advantage for GRPO-NSR, operating only on Outcome reward
-    (with only one scalar reward for each response).
-    """
-
-    switch_idx = step // frequency
-    
-    if switch_idx % 2 == 0:
-        advantages, scores = compute_grpo_outcome_advantage(
-            token_level_rewards,
-            response_mask,
-            index,
-            epsilon,
-            norm_adv_by_std_in_grpo,
-            config
-        )
-    else:
-        advantages, scores = compute_nsr_outcome_advantage(
-            token_level_rewards,
-            response_mask,
-        )
-
-    return advantages, scores
-
 @register_adv_est(AdvantageEstimator.GRPO_RANGE)
 def compute_grpo_range_outcome_advantage(
     token_level_rewards: torch.Tensor,
     response_mask: torch.Tensor,
-    step: int,
     current_entropy: float,
     entropy_lower_bound: float,
     entropy_upper_bound: float,
@@ -434,7 +335,7 @@ def compute_grpo_range_outcome_advantage(
     """
     
     if current_entropy > entropy_upper_bound:
-        advantages, scores = compute_raft_outcome_advantage(
+        advantages, scores = compute_raftpp_outcome_advantage(
             token_level_rewards,
             response_mask,
         )
@@ -455,36 +356,166 @@ def compute_grpo_range_outcome_advantage(
 
     return advantages, scores
 
-@register_adv_est(AdvantageEstimator.RAFTPP_NSR)
-def compute_raftpp_nsr_outcome_advantage(
+
+@register_adv_est(AdvantageEstimator.GRPO_RANGE_LINEAR)
+def compute_grpo_range_linear_outcome_advantage(
     token_level_rewards: torch.Tensor,
     response_mask: torch.Tensor,
     step: int,
-    frequency: int,
+    total_steps: int,
+    current_entropy: float,
+    entropy_lower_bound_range: (float, float),
+    entropy_upper_bound_range: (float, float),
     index: np.ndarray,
     epsilon: float = 1e-6,
     norm_adv_by_std_in_grpo: bool = True,
     config: Optional[AlgoConfig] = None,
-) -> tuple[torch.Tensor, torch.Tensor]:
+):
     """
-    Compute advantage for RAFTPP-NSR, operating only on Outcome reward
+    Compute advantage for GRPO-RANGE-LINEAR, operating only on Outcome reward
     (with only one scalar reward for each response).
     """
-
-    switch_idx = step // frequency
+    entropy_lower_bound = entropy_lower_bound_range[0] + (entropy_lower_bound_range[1] - entropy_lower_bound_range[0]) * step / total_steps
+    entropy_upper_bound = entropy_upper_bound_range[0] + (entropy_upper_bound_range[1] - entropy_upper_bound_range[0]) * step / total_steps
     
-    if switch_idx % 2 == 0:
-        advantages, scores = compute_raft_outcome_advantage(
-            token_level_rewards,
-            response_mask,
-        )
-    else:
-        advantages, scores = compute_nsr_outcome_advantage(
-            token_level_rewards,
-            response_mask,
-        )
-
+    advantages, scores = compute_grpo_range_outcome_advantage(
+        token_level_rewards,
+        response_mask,
+        current_entropy,
+        entropy_lower_bound,
+        entropy_upper_bound,
+        index,
+        epsilon,
+        norm_adv_by_std_in_grpo,
+        config
+    )
     return advantages, scores
+
+
+@register_adv_est(AdvantageEstimator.NSR)
+def compute_nsr_outcome_advantage(
+    token_level_rewards: torch.Tensor,
+    response_mask: torch.Tensor,
+    config: Optional[AlgoConfig] = None,
+):
+    """
+    Compute advantage for NSR, operating only on Outcome reward 
+    (with only one scalar reward for each response).
+    """
+    scores = token_level_rewards.sum(dim=-1)
+
+    with torch.no_grad():
+        advantages = scores.clone()
+        advantages[advantages>0.] = 0.
+        advantages = advantages.unsqueeze(-1) * response_mask
+
+    return advantages, scores.unsqueeze(-1)
+
+
+@register_adv_est(AdvantageEstimator.W_REINFORCE)
+def compute_w_reinforce_outcome_advantage(
+    token_level_rewards: torch.Tensor,
+    response_mask: torch.Tensor,
+    config: Optional[AlgoConfig] = None,
+):
+    """
+    Compute advantage for W-REINFORCE, operating only on Outcome reward 
+    (with only one scalar reward for each response).
+    """
+    scores = token_level_rewards.sum(dim=-1)
+
+    with torch.no_grad():
+        advantages = scores.clone()
+        weights = torch.ones_like(scores)
+        weights[advantages>0.] = 0.1
+
+        advantages = advantages * weights
+        advantages = advantages.unsqueeze(-1) * response_mask
+
+    return advantages, scores.unsqueeze(-1)
+
+
+@register_adv_est(AdvantageEstimator.ENTROPIC)
+def compute_entropic_outcome_advantage(
+    token_level_rewards: torch.Tensor,
+    response_mask: torch.Tensor,
+    current_entropy: float,
+    target_entropy: float,
+    last_alpha: float,
+    config: Optional[AlgoConfig] = None,
+):
+    """
+    Compute advantage for ENTROPIC, operating only on Outcome reward 
+    (with only one scalar reward for each response).
+    """
+    scores = token_level_rewards.sum(dim=-1)
+
+    with torch.no_grad():
+        advantages = scores.clone()
+        weights = torch.ones_like(scores)
+
+        alpha = last_alpha + 1. * (current_entropy - target_entropy)
+        weights[advantages>0.] = 1. + alpha
+        weights[advantages<0.] = 1. - alpha
+        advantages = advantages * weights
+
+        advantages = advantages.unsqueeze(-1) * response_mask
+
+    return advantages, scores.unsqueeze(-1), alpha - 0.99 * (current_entropy - target_entropy)
+
+
+# Below are the default advantage estimators in the original VerL codebase.
+
+@register_adv_est(AdvantageEstimator.GAE)  # or simply: @register_adv_est("gae")
+def compute_gae_advantage_return(
+    token_level_rewards: torch.Tensor,
+    values: torch.Tensor,
+    response_mask: torch.Tensor,
+    gamma: torch.Tensor,
+    lam: torch.Tensor,
+):
+    """Adapted from https://github.com/huggingface/trl/blob/main/trl/trainer/ppo_trainer.py
+
+    Args:
+        token_level_rewards: `(torch.Tensor)`
+            shape is (bs, response_length)
+        values: `(torch.Tensor)`
+            shape is (bs, response_length)
+        response_mask: `(torch.Tensor)`
+            shape is (bs, response_length). [EOS] mask. The token after [EOS] have mask zero.
+        gamma is `(float)`
+            discounted factor used in RL
+        lam: `(float)`
+            lambda value when computing Generalized Advantage Estimation (https://arxiv.org/abs/1506.02438)
+
+    Returns:
+        advantages: `(torch.Tensor)`
+            shape: (bs, response_length)
+        Returns: `(torch.Tensor)`
+            shape: (bs, response_length)
+
+    """
+    with torch.no_grad():
+        nextvalues = 0
+        lastgaelam = 0
+        advantages_reversed = []
+        gen_len = token_level_rewards.shape[-1]
+
+        for t in reversed(range(gen_len)):
+            delta = token_level_rewards[:, t] + gamma * nextvalues - values[:, t]
+            lastgaelam_ = delta + gamma * lam * lastgaelam
+
+            # skip values and TD-error on observation tokens
+            nextvalues = values[:, t] * response_mask[:, t] + (1 - response_mask[:, t]) * nextvalues
+            lastgaelam = lastgaelam_ * response_mask[:, t] + (1 - response_mask[:, t]) * lastgaelam
+
+            advantages_reversed.append(lastgaelam)
+        advantages = torch.stack(advantages_reversed[::-1], dim=1)
+
+        returns = advantages + values
+        advantages = verl_F.masked_whiten(advantages, response_mask)
+    return advantages, returns
+
 
 @register_adv_est(AdvantageEstimator.GRPO_PASSK)  # or simply: @register_adv_est("grpo_passk")
 def compute_grpo_passk_outcome_advantage(

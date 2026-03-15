@@ -58,8 +58,8 @@ def need_critic(config: DictConfig) -> bool:
     elif config.algorithm.adv_estimator == AdvantageEstimator.GAE:
         return True
     else:
-        warnings.warn(
-            "Disabled critic as algorithm.adv_estimator != gae. If it is not intended, please set critic.enable=True",
-            stacklevel=2,
-        )
+        # warnings.warn(
+        #     "Disabled critic as algorithm.adv_estimator != gae. If it is not intended, please set critic.enable=True",
+        #     stacklevel=2,
+        # )
         return False

@@ -46,7 +46,7 @@ class TorchProfilerToolConfig(BaseConfig):
 
     def __post_init__(self) -> None:
         """config validation logics go here"""
-        warnings.warn("Torch profiler tool config is not fully supported now.", stacklevel=1)
+        # warnings.warn("Torch profiler tool config is not fully supported now.", stacklevel=1)
         assert isinstance(self.step_start, int), f"Profiler step_start must be of type int, got {type(self.step_start)}"
 
 

@@ -54,11 +54,11 @@ def default_compute_score(
 
         # from . import math_verify
         # res = math_verify.compute_score(solution_str, ground_truth)
-    elif data_source in ["math_dapo", "math", "math_dapo_reasoning", "HuggingFaceH4/aime_2024", "MathArena/aime_2025"] or data_source.startswith("aime"):
+    elif data_source in ["math_dapo", "math", "math_dapo_reasoning", "HuggingFaceH4/aime_2024", "MathArena/aime_2025", "math-ai/aime26"] or data_source.startswith("aime"):
         from . import math_dapo
 
         # Use strict_box_verify for AIME datasets since they use \boxed{} format
-        strict_box = data_source in ["HuggingFaceH4/aime_2024", "MathArena/aime_2025"] or data_source.startswith("aime")
+        strict_box = data_source in ["HuggingFaceH4/aime_2024", "MathArena/aime_2025", "math-ai/aime26"] or data_source.startswith("aime")
         res = math_dapo.compute_score(solution_str, ground_truth, strict_box_verify=strict_box)
     elif data_source in [
         "numina_aops_forum",

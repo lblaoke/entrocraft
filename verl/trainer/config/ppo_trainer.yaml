@@ -116,9 +116,6 @@ algorithm:
   # Entropy control settings
   entropy_control:
 
-    # Frequency parameter for switching between GRPO and NSR
-    frequency: 100000
-
     # Fixed entropy coefficient (set to null to disable, or a float value like 0.1)
     fixed_entropy: 0.0
 
@@ -127,6 +124,12 @@ algorithm:
 
     # Upper bound for entropy control
     entropy_upper_bound: 1.0
+    
+    # Per-step scheduled range for entropy lower bound (start, end)
+    entropy_lower_bound_range: [1.0, 1.0]
+
+    # Per-step scheduled range for entropy upper bound (start, end)
+    entropy_upper_bound_range: [0.0, 0.0]
 
 # config for the trainer
 trainer:

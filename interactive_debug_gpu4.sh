@@ -4,7 +4,7 @@ sinteractive \
     --job-name=debug \
     --partition=ai \
     --account=ruqiz \
-    --qos=preemptible \
+    --qos=normal \
     --nodes=1 \
     --ntasks-per-node=4 \
     --gres=gpu:4 \

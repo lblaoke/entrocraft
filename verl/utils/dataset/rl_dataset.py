@@ -133,8 +133,10 @@ class RLHFDataset(Dataset):
         for parquet_file in self.data_files:
             # read parquet files and cache
             dataframe = datasets.load_dataset("parquet", data_files=parquet_file)["train"]
+            if "id" in dataframe.features and str(dataframe.features["id"]) != "Value('string')":
+                dataframe = dataframe.cast_column("id", datasets.Value("string"))
             dataframes.append(dataframe)
-        self.dataframe: datasets.Dataset = datasets.concatenate_datasets(dataframes)
+        self.dataframe = datasets.concatenate_datasets(dataframes)
 
         print(f"dataset len: {len(self.dataframe)}")
 

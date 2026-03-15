@@ -22,13 +22,13 @@ if __name__ == "__main__":
     parser.add_argument("--hdfs_dir", default=None)
     parser.add_argument("--local_dataset_path", default=None, help="The local path to the raw dataset, if it exists.")
     parser.add_argument(
-        "--local_save_dir", default="./data/aime25", help="The save directory for the preprocessed dataset."
+        "--local_save_dir", default="./data/aime26", help="The save directory for the preprocessed dataset."
     )
 
     args = parser.parse_args()
     local_dataset_path = args.local_dataset_path
 
-    data_source = "MathArena/aime_2025"
+    data_source = "math-ai/aime26"
     print(f"Loading the {data_source} dataset from huggingface...", flush=True)
     if local_dataset_path is not None:
         dataset = datasets.load_dataset(
@@ -39,7 +39,7 @@ if __name__ == "__main__":
             data_source,
         )
 
-    test_dataset = dataset["train"]
+    test_dataset = dataset["test"]
 
     instruction_following = "Let's think step by step and output the final answer within \\boxed{}."
 

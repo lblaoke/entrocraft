@@ -77,6 +77,8 @@ algorithm:
     fixed_entropy: 0.0
     entropy_lower_bound: 0.0
     entropy_upper_bound: 1.0
+    entropy_lower_bound_range: [1.0, 1.0]
+    entropy_upper_bound_range: [0.0, 0.0]
 
 trainer:
   balance_batch: True
