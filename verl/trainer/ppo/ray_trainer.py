@@ -228,10 +228,19 @@ def compute_advantage(
         data.batch["advantages"] = advantages
         data.batch["returns"] = returns
 
+    elif adv_estimator == AdvantageEstimator.REINFORCE:
+        advantages, returns = core_algos.compute_reinforce_outcome_advantage(
+            token_level_rewards=data.batch['token_level_rewards'],
+            response_mask=data.batch['response_mask'],
+        )
+        data.batch['advantages'] = advantages
+        data.batch['returns'] = returns
+
     elif adv_estimator == AdvantageEstimator.RAFTPP:
         advantages, returns = core_algos.compute_raftpp_outcome_advantage(
             token_level_rewards=data.batch['token_level_rewards'],
-            response_mask=data.batch['response_mask'])
+            response_mask=data.batch['response_mask'],
+        )
         data.batch['advantages'] = advantages
         data.batch['returns'] = returns
 
@@ -239,7 +248,6 @@ def compute_advantage(
         advantages, returns = core_algos.compute_grpo_range_outcome_advantage(
             token_level_rewards=data.batch['token_level_rewards'],
             response_mask=data.batch['response_mask'],
-            step=global_steps,
             current_entropy=data.non_tensor_batch['current_entropy'][0],
             entropy_lower_bound=config.entropy_control.get("entropy_lower_bound", 0.0),
             entropy_upper_bound=config.entropy_control.get("entropy_upper_bound", 1.0),
@@ -249,6 +257,19 @@ def compute_advantage(
 
     elif adv_estimator == AdvantageEstimator.GRPO_RANGE_LINEAR:
         advantages, returns = core_algos.compute_grpo_range_linear_outcome_advantage(
+            token_level_rewards=data.batch['token_level_rewards'],
+            response_mask=data.batch['response_mask'],
+            step=global_steps,
+            total_steps=total_steps,
+            current_entropy=data.non_tensor_batch['current_entropy'][0],
+            entropy_lower_bound_range=config.entropy_control.get("entropy_lower_bound_range", (1.0, 1.0)),
+            entropy_upper_bound_range=config.entropy_control.get("entropy_upper_bound_range", (0.0, 0.0)),
+            index=data.non_tensor_batch['uid'])
+        data.batch['advantages'] = advantages
+        data.batch['returns'] = returns
+
+    elif adv_estimator == AdvantageEstimator.GRPO_RANGE_COS:
+        advantages, returns = core_algos.compute_grpo_range_cos_outcome_advantage(
             token_level_rewards=data.batch['token_level_rewards'],
             response_mask=data.batch['response_mask'],
             step=global_steps,

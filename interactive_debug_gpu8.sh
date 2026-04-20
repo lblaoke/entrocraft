@@ -4,9 +4,9 @@ sinteractive \
     --job-name=debug \
     --partition=ai \
     --account=ruqiz \
-    --qos=normal \
+    --qos=preemptible \
     --nodes=1 \
     --ntasks-per-node=8 \
     --gres=gpu:8 \
     --cpus-per-task=14 \
-    --time=0-01:00:00
+    --time=0-00:30:00

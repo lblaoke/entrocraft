@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#SBATCH --job-name=qwen3-4b-base_numina_math_gspo_n8
+#SBATCH --job-name=qwen3-4b-base_numina_math_gspo_range_linear_n8
 #SBATCH --partition=ai
 #SBATCH --account=ruqiz
 #SBATCH --qos=normal
@@ -23,7 +23,7 @@ conda activate verl
 
 # Project and experiment name
 project_name="antifragile_rl"
-experiment_name="qwen3-4b-base_numina_math_gspo_n8"
+experiment_name="qwen3-4b-base_numina_math_gspo_range_linear_n8"
 
 
 # Debug mode
@@ -95,7 +95,9 @@ fi
 
 
 python3 -m verl.trainer.main_ppo \
-    algorithm.adv_estimator=grpo \
+    algorithm.adv_estimator=grpo_range_linear \
+    algorithm.entropy_control.entropy_lower_bound_range='[0.6, 0.2]' \
+    algorithm.entropy_control.entropy_upper_bound_range='[0.7, 0.3]' \
     actor_rollout_ref.actor.policy_loss.loss_mode=gspo \
     data.train_files="$train_files" \
     data.val_files="$test_files" \

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#SBATCH --job-name=qwen3-4b-base_numina_math_gspo_n8
+#SBATCH --job-name=qwen3-4b-base_numina_math_gspo_entropy_loss_0.003_n8
 #SBATCH --partition=ai
 #SBATCH --account=ruqiz
 #SBATCH --qos=normal
@@ -23,7 +23,7 @@ conda activate verl
 
 # Project and experiment name
 project_name="antifragile_rl"
-experiment_name="qwen3-4b-base_numina_math_gspo_n8"
+experiment_name="qwen3-4b-base_numina_math_gspo_entropy_loss_0.003_n8"
 
 
 # Debug mode
@@ -116,7 +116,7 @@ python3 -m verl.trainer.main_ppo \
     actor_rollout_ref.actor.use_kl_loss=True \
     actor_rollout_ref.actor.kl_loss_coef=0.001 \
     actor_rollout_ref.actor.kl_loss_type=low_var_kl \
-    actor_rollout_ref.actor.entropy_coeff=0 \
+    actor_rollout_ref.actor.entropy_coeff=0.003 \
     actor_rollout_ref.model.enable_gradient_checkpointing=True \
     actor_rollout_ref.model.enable_activation_offload=True \
     actor_rollout_ref.actor.fsdp_config.param_offload=False \

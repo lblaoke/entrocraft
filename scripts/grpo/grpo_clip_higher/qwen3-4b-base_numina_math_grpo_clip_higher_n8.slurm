@@ -8,7 +8,7 @@
 #SBATCH --ntasks-per-node=8
 #SBATCH --gres=gpu:8
 #SBATCH --cpus-per-task=14
-#SBATCH --time=0-12:00:00
+#SBATCH --time=1-12:00:00
 #SBATCH --output=./logs/slurm-%j.out
 #SBATCH --error=./logs/slurm-%j.err
 #SBATCH --mail-type=ALL
@@ -20,7 +20,7 @@ module load conda/2024.09
 conda activate verl
 
 data_root="./data"
-train_files="['$data_root/numina_math_100k/train.parquet']"
+train_files="['$data_root/numina_math/train.parquet']"
 
 eval_math500=$data_root/math500/test.parquet
 eval_amc23=$data_root/amc23/test.parquet

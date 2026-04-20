@@ -94,11 +94,13 @@ class AdvantageEstimator(str, Enum):
     estimator instead.
     """
 
+    REINFORCE = "reinforce"
     RAFTPP = "raftpp"
 
     GRPO = "grpo"
     GRPO_RANGE = "grpo_range"
     GRPO_RANGE_LINEAR = "grpo_range_linear"
+    GRPO_RANGE_COS = "grpo_range_cos"
 
     NSR = "nsr"
     W_REINFORCE = "w_reinforce"
@@ -217,6 +219,26 @@ def get_kl_controller(kl_ctrl):
 
 
 # Below are the implemented advantage estimators as used in the paper.
+
+@register_adv_est(AdvantageEstimator.REINFORCE)
+def compute_reinforce_outcome_advantage(
+    token_level_rewards: torch.Tensor,
+    response_mask: torch.Tensor,
+    config: Optional[AlgoConfig] = None,
+):
+    """
+    Compute advantage for REINFORCE, operating only on Outcome reward
+    (with only one scalar reward for each response).
+
+    """
+    scores = token_level_rewards.sum(dim=-1)
+
+    with torch.no_grad():
+        advantages = scores.clone()
+        advantages = advantages.unsqueeze(-1) * response_mask
+
+    return advantages, scores.unsqueeze(-1)
+
 
 @register_adv_est(AdvantageEstimator.RAFTPP)
 def compute_raftpp_outcome_advantage(
@@ -378,6 +400,44 @@ def compute_grpo_range_linear_outcome_advantage(
     entropy_lower_bound = entropy_lower_bound_range[0] + (entropy_lower_bound_range[1] - entropy_lower_bound_range[0]) * step / total_steps
     entropy_upper_bound = entropy_upper_bound_range[0] + (entropy_upper_bound_range[1] - entropy_upper_bound_range[0]) * step / total_steps
     
+    advantages, scores = compute_grpo_range_outcome_advantage(
+        token_level_rewards,
+        response_mask,
+        current_entropy,
+        entropy_lower_bound,
+        entropy_upper_bound,
+        index,
+        epsilon,
+        norm_adv_by_std_in_grpo,
+        config
+    )
+    return advantages, scores
+
+
+@register_adv_est(AdvantageEstimator.GRPO_RANGE_COS)
+def compute_grpo_range_cos_outcome_advantage(
+    token_level_rewards: torch.Tensor,
+    response_mask: torch.Tensor,
+    step: int,
+    total_steps: int,
+    current_entropy: float,
+    entropy_lower_bound_range: (float, float),
+    entropy_upper_bound_range: (float, float),
+    index: np.ndarray,
+    epsilon: float = 1e-6,
+    norm_adv_by_std_in_grpo: bool = True,
+    config: Optional[AlgoConfig] = None,
+):
+    """
+    Compute advantage for GRPO-RANGE-COS, operating only on Outcome reward
+    (with only one scalar reward for each response).
+
+    Same as GRPO-RANGE-LINEAR but uses cosine annealing to decay entropy bounds.
+    """
+    progress = 0.5 * (1 - math.cos(math.pi * step / total_steps))
+    entropy_lower_bound = entropy_lower_bound_range[0] + (entropy_lower_bound_range[1] - entropy_lower_bound_range[0]) * progress
+    entropy_upper_bound = entropy_upper_bound_range[0] + (entropy_upper_bound_range[1] - entropy_upper_bound_range[0]) * progress
+
     advantages, scores = compute_grpo_range_outcome_advantage(
         token_level_rewards,
         response_mask,
@@ -1327,6 +1387,100 @@ def compute_policy_loss_clip_cov(
 
     pg_losses = torch.maximum(pg_losses1, pg_losses2) * corr
     pg_loss = agg_loss(loss_mat=pg_losses, loss_mask=response_mask, loss_agg_mode=loss_agg_mode)
+
+    return pg_loss, pg_clipfrac, ppo_kl, torch.tensor(0.0)
+
+
+@register_policy_loss("gspo_clip_cov")
+def compute_policy_loss_gspo_clip_cov(
+    old_log_prob: torch.Tensor,
+    log_prob: torch.Tensor,
+    advantages: torch.Tensor,
+    response_mask: torch.Tensor,
+    loss_agg_mode: str = "seq-mean-token-mean",
+    config: Optional[DictConfig | ActorConfig] = None,
+    rollout_log_probs: torch.Tensor | None = None,
+    index: Optional[np.ndarray] = None,
+    **kwargs,
+) -> tuple[torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor]:
+    """
+    Compute the clipped policy objective for GSPO with covariance-based token masking (Clip-Cov).
+
+    Combines GSPO's sequence-level importance ratio with the covariance-based token exclusion
+    mechanic from Clip-Cov. Tokens whose advantage-log_prob covariance falls in [clip_cov_lb,
+    clip_cov_ub] and were not already clipped by the PPO clip are randomly sampled (up to
+    clip_cov_ratio fraction) and zeroed out from the loss.
+
+    Args:
+        old_log_prob (torch.Tensor):
+            Log-probabilities under the old policy, shape (batch_size, response_length).
+        log_prob (torch.Tensor):
+            Log-probabilities under the current policy, shape (batch_size, response_length).
+        advantages (torch.Tensor):
+            Advantage estimates, shape (batch_size, response_length).
+        response_mask (torch.Tensor):
+            Token mask, shape (batch_size, response_length).
+        loss_agg_mode (str, optional):
+            Aggregation mode. For GSPO-based losses this is always "seq-mean-token-mean".
+        config (ActorConfig):
+            Actor config providing clip_ratio_low, clip_ratio_high, and policy_loss sub-config.
+    """
+    assert config is not None
+    assert isinstance(config, ActorConfig)
+    assert config.policy_loss is not None
+
+    clip_ratio_low = config.clip_ratio_low if config.clip_ratio_low is not None else config.clip_ratio
+    clip_ratio_high = config.clip_ratio_high if config.clip_ratio_high is not None else config.clip_ratio
+    clip_cov_ratio = config.policy_loss.clip_cov_ratio if config.policy_loss.clip_cov_ratio is not None else 0.0002
+    clip_cov_lb = config.policy_loss.clip_cov_lb if config.policy_loss.clip_cov_lb is not None else 1.0
+    clip_cov_ub = config.policy_loss.clip_cov_ub if config.policy_loss.clip_cov_ub is not None else 5.0
+
+    assert clip_cov_ratio > 0, "clip_cov_ratio should be larger than 0."
+
+    negative_approx_kl = log_prob - old_log_prob
+    ppo_kl = verl_F.masked_mean(-negative_approx_kl, response_mask)
+
+    # Sequence-level importance ratio (GSPO):
+    # si(θ) = exp[(1/|yi|) * Σ_t (log π_θ - log π_θold)]
+    seq_lengths = torch.sum(response_mask, dim=-1).clamp(min=1)
+    negative_approx_kl_seq = torch.sum(negative_approx_kl * response_mask, dim=-1) / seq_lengths
+
+    # Token-level surrogate with stop-gradient on seq ratio:
+    # log s_i,t(θ) = sg[log s_i(θ)] + log π_θ - sg[log π_θ]
+    log_seq_importance_ratio = log_prob - log_prob.detach() + negative_approx_kl_seq.detach().unsqueeze(-1)
+    log_seq_importance_ratio = torch.clamp(log_seq_importance_ratio, max=10.0)
+    seq_importance_ratio = torch.exp(log_seq_importance_ratio)
+
+    pg_losses1 = -advantages * seq_importance_ratio
+    pg_losses2 = -advantages * torch.clamp(seq_importance_ratio, 1 - clip_ratio_low, 1 + clip_ratio_high)
+    clip_by_origin = (pg_losses2 > pg_losses1) & (response_mask > 0)
+
+    # Covariance-based token masking (Clip-Cov):
+    # Exclude tokens where Cov(advantage, log_prob) ∈ [clip_cov_lb, clip_cov_ub]
+    # and that were not already clipped by PPO, up to clip_cov_ratio fraction.
+    corr = torch.ones_like(advantages)
+    cov_all = (advantages - verl_F.masked_mean(advantages, response_mask)) * (
+        log_prob - verl_F.masked_mean(log_prob.detach(), response_mask)
+    )
+    cov_all[response_mask == 0] = -torch.inf
+    cov_all[clip_by_origin] = -torch.inf
+
+    clip_num = max(int(clip_cov_ratio * response_mask.sum().item()), 1)
+    top_k_idx = (cov_all < clip_cov_ub) & (cov_all > clip_cov_lb) & (response_mask > 0)
+    top_k_idx = torch.nonzero(top_k_idx)
+
+    if len(top_k_idx) > 0:
+        perm = torch.randperm(len(top_k_idx))
+        top_k_idx = top_k_idx[perm[: min(clip_num, len(top_k_idx))]]
+    else:
+        top_k_idx = torch.empty((0, 2), device=cov_all.device, dtype=torch.long)
+
+    corr[top_k_idx[:, 0], top_k_idx[:, 1]] = 0
+
+    pg_clipfrac = verl_F.masked_mean((corr == 0).float(), response_mask)
+
+    pg_losses = torch.maximum(pg_losses1, pg_losses2) * corr
+    pg_loss = agg_loss(loss_mat=pg_losses, loss_mask=response_mask, loss_agg_mode="seq-mean-token-mean")
 
     return pg_loss, pg_clipfrac, ppo_kl, torch.tensor(0.0)
 

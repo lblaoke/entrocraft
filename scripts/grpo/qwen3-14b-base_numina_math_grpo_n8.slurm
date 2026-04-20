@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#SBATCH --job-name=qwen3-4b-base_numina_math_gspo_n8
+#SBATCH --job-name=qwen3-14b-base_numina_math_grpo_n8
 #SBATCH --partition=ai
 #SBATCH --account=ruqiz
 #SBATCH --qos=normal
@@ -8,7 +8,7 @@
 #SBATCH --ntasks-per-node=8
 #SBATCH --gres=gpu:8
 #SBATCH --cpus-per-task=14
-#SBATCH --time=0-12:00:00
+#SBATCH --time=3-00:00:00
 #SBATCH --output=./logs/slurm-%j.out
 #SBATCH --error=./logs/slurm-%j.err
 #SBATCH --mail-type=ALL
@@ -23,7 +23,7 @@ conda activate verl
 
 # Project and experiment name
 project_name="antifragile_rl"
-experiment_name="qwen3-4b-base_numina_math_gspo_n8"
+experiment_name="qwen3-14b-base_numina_math_grpo_n8"
 
 
 # Debug mode
@@ -39,7 +39,7 @@ if [ "$debug_mode" = True ]; then
     rollout_n=2
     rollout_val_n=2
 else
-    train_files="['$data_root/numina_math_100k/train.parquet']"
+    train_files="['$data_root/numina_math/train.parquet']"
     train_batch_size=1024
     max_response_length=3072
     rollout_n=8
@@ -55,7 +55,7 @@ eval_aime25=$data_root/aime25/test.parquet
 eval_aime26=$data_root/aime26/test.parquet
 test_files="['$eval_math500', '$eval_amc23', '$eval_aime24', '$eval_aime25', '$eval_aime26']"
 
-model_name="Qwen/Qwen3-4B-Base"
+model_name="Qwen/Qwen3-14B-Base"
 
 
 # Auto-detect number of GPUs and nodes
@@ -96,7 +96,6 @@ fi
 
 python3 -m verl.trainer.main_ppo \
     algorithm.adv_estimator=grpo \
-    actor_rollout_ref.actor.policy_loss.loss_mode=gspo \
     data.train_files="$train_files" \
     data.val_files="$test_files" \
     data.train_batch_size=$train_batch_size \

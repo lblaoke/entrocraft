@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#SBATCH --job-name=qwen3-4b-base_numina_math_full_grpo_range_linear_n8
+#SBATCH --job-name=qwen3-4b-base_numina_math_full_grpo_range_0.5_n8
 #SBATCH --partition=ai
 #SBATCH --account=ruqiz
 #SBATCH --qos=normal
@@ -14,28 +14,49 @@
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=li4468@purdue.edu
 
+
 # Load environment modules
 module load cuda/12.6.0
 module load conda/2024.09
 conda activate verl
 
-data_root="./data"
-train_files="['$data_root/numina_math/train.parquet']"
 
+# Project and experiment name
+project_name="antifragile_rl"
+experiment_name="qwen3-4b-base_numina_math_full_grpo_range_0.5_n8"
+
+
+# Debug mode
+data_root="./data"
+batch_size_per_gpu=32
+debug_mode=False
+
+if [ "$debug_mode" = True ]; then
+    echo "Debug mode enabled"
+    train_files="['$data_root/numina_math_2k/train.parquet']"
+    train_batch_size=8
+    max_response_length=8
+    rollout_n=2
+    rollout_val_n=2
+else
+    train_files="['$data_root/numina_math/train.parquet']"
+    train_batch_size=1024
+    max_response_length=3072
+    rollout_n=8
+    rollout_val_n=32
+fi
+
+
+# Data and model
 eval_math500=$data_root/math500/test.parquet
 eval_amc23=$data_root/amc23/test.parquet
 eval_aime24=$data_root/aime24/test.parquet
 eval_aime25=$data_root/aime25/test.parquet
 eval_aime26=$data_root/aime26/test.parquet
-
 test_files="['$eval_math500', '$eval_amc23', '$eval_aime24', '$eval_aime25', '$eval_aime26']"
 
 model_name="Qwen/Qwen3-4B-Base"
-rollout_n=8
-batch_size_per_gpu=32
 
-project_name="antifragile_rl"
-experiment_name="qwen3-4b-base_numina_math_full_grpo_range_linear_n8"
 
 # Auto-detect number of GPUs and nodes
 n_gpus_per_node=""
@@ -72,16 +93,17 @@ else
     [ "$SLURM_JOB_NAME" = "debug" ] && echo "Debug mode detected - wandb logging disabled"
 fi
 
+
 python3 -m verl.trainer.main_ppo \
-    algorithm.adv_estimator=grpo_range_linear \
-    algorithm.entropy_control.entropy_lower_bound_range='[0.6, 0.1]' \
-    algorithm.entropy_control.entropy_upper_bound_range='[0.7, 0.2]' \
+    algorithm.adv_estimator=grpo_range \
+    algorithm.entropy_control.entropy_lower_bound=0.5 \
+    algorithm.entropy_control.entropy_upper_bound=0.5 \
     data.train_files="$train_files" \
     data.val_files="$test_files" \
-    data.train_batch_size=1024 \
+    data.train_batch_size=$train_batch_size \
     data.val_batch_size=128 \
     data.max_prompt_length=1024 \
-    data.max_response_length=3072 \
+    data.max_response_length=$max_response_length \
     data.filter_overlong_prompts=True \
     data.truncation='error' \
     data.shuffle=False \
@@ -108,11 +130,10 @@ python3 -m verl.trainer.main_ppo \
     actor_rollout_ref.rollout.n=$rollout_n \
     actor_rollout_ref.ref.log_prob_micro_batch_size_per_gpu=$batch_size_per_gpu \
     actor_rollout_ref.ref.fsdp_config.param_offload=True \
-    actor_rollout_ref.rollout.enable_chunked_prefill=False \
     actor_rollout_ref.rollout.val_kwargs.temperature=0.6 \
     actor_rollout_ref.rollout.val_kwargs.top_p=0.95 \
     actor_rollout_ref.rollout.val_kwargs.top_k=20 \
-    actor_rollout_ref.rollout.val_kwargs.n=32 \
+    actor_rollout_ref.rollout.val_kwargs.n=$rollout_val_n \
     actor_rollout_ref.rollout.val_kwargs.do_sample=True \
     critic.model.enable_gradient_checkpointing=True \
     critic.model.enable_activation_offload=True \

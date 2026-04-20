@@ -8,7 +8,7 @@
 #SBATCH --ntasks-per-node=8
 #SBATCH --gres=gpu:8
 #SBATCH --cpus-per-task=14
-#SBATCH --time=0-12:00:00
+#SBATCH --time=1-12:00:00
 #SBATCH --output=./logs/slurm-%j.out
 #SBATCH --error=./logs/slurm-%j.err
 #SBATCH --mail-type=ALL
@@ -39,7 +39,7 @@ if [ "$debug_mode" = True ]; then
     rollout_n=2
     rollout_val_n=2
 else
-    train_files="['$data_root/numina_math_100k/train.parquet']"
+    train_files="['$data_root/numina_math/train.parquet']"
     train_batch_size=1024
     max_response_length=3072
     rollout_n=8
@@ -97,6 +97,12 @@ fi
 python3 -m verl.trainer.main_ppo \
     algorithm.adv_estimator=grpo \
     actor_rollout_ref.actor.policy_loss.loss_mode=clip_cov \
+    actor_rollout_ref.actor.clip_ratio_low=1.0 \
+    actor_rollout_ref.actor.clip_ratio_high=1.0 \
+    actor_rollout_ref.actor.clip_ratio_c=10.0 \
+    actor_rollout_ref.actor.policy_loss.clip_cov_ratio=0.0002 \
+    actor_rollout_ref.actor.policy_loss.clip_cov_lb=1.0 \
+    actor_rollout_ref.actor.policy_loss.clip_cov_ub=5.0 \
     data.train_files="$train_files" \
     data.val_files="$test_files" \
     data.train_batch_size=$train_batch_size \
