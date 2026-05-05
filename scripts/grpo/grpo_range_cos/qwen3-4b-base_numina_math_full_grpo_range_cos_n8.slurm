@@ -2,7 +2,7 @@
 
 #SBATCH --job-name=qwen3-4b-base_numina_math_full_grpo_range_cos_n8
 #SBATCH --partition=ai
-#SBATCH --account=ruqiz
+#SBATCH --account=<SLURM_ACCOUNT>
 #SBATCH --qos=normal
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=8
@@ -12,7 +12,7 @@
 #SBATCH --output=./logs/slurm-%j.out
 #SBATCH --error=./logs/slurm-%j.err
 #SBATCH --mail-type=ALL
-#SBATCH --mail-user=li4468@purdue.edu
+#SBATCH --mail-user=<USER_EMAIL>
 
 
 # Load environment modules
@@ -22,7 +22,7 @@ conda activate verl
 
 
 # Project and experiment name
-project_name="antifragile_rl"
+project_name="project_name"
 experiment_name="qwen3-4b-base_numina_math_full_grpo_range_cos_n8"
 
 

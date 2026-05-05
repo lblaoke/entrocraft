@@ -2,7 +2,7 @@
 
 #SBATCH --job-name=qwen2.5-math-7b_numina_math_100k_raftpp
 #SBATCH --partition=ai
-#SBATCH --account=ruqiz
+#SBATCH --account=<SLURM_ACCOUNT>
 #SBATCH --qos=normal
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=8
@@ -12,7 +12,7 @@
 #SBATCH --output=./logs/slurm-%j.out
 #SBATCH --error=./logs/slurm-%j.err
 #SBATCH --mail-type=ALL
-#SBATCH --mail-user=li4468@purdue.edu
+#SBATCH --mail-user=<USER_EMAIL>
 
 # Load environment modules
 module load cuda/12.6.0
@@ -36,7 +36,7 @@ batch_size_per_gpu=32
 rollout_length_filter_keep_fraction=1.0
 rollout_r_var_filter_keep_fraction=1.0
 
-project_name="rl_dist_shift"
+project_name="project_name"
 experiment_name="qwen2.5-math-7b_numina_math_100k_raftpp_rollout$rollout_n"
 
 # Auto-detect number of GPUs and nodes

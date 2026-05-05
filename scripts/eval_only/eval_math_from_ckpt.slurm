@@ -1,8 +1,8 @@
 #!/bin/bash
 
-#SBATCH --job-name=eval_math_from_ckpt_2048
+#SBATCH --job-name=eval_math_from_ckpt
 #SBATCH --partition=ai
-#SBATCH --account=ruqiz
+#SBATCH --account=<SLURM_ACCOUNT>
 #SBATCH --qos=preemptible
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=8
@@ -12,7 +12,7 @@
 #SBATCH --output=./logs/slurm-%j.out
 #SBATCH --error=./logs/slurm-%j.err
 #SBATCH --mail-type=ALL
-#SBATCH --mail-user=li4468@purdue.edu
+#SBATCH --mail-user=<USER_EMAIL>
 
 # Load environment modules
 module load cuda/12.6.0
@@ -66,7 +66,7 @@ python3 -m verl.trainer.main_ppo \
     data.val_files="$test_files" \
     data.train_batch_size=$(( n_gpus_per_node * batch_size_per_gpu )) \
     data.max_prompt_length=1024 \
-    data.max_response_length=1024 \
+    data.max_response_length=3072 \
     data.filter_overlong_prompts=False \
     data.truncation='error' \
     data.shuffle=False \
