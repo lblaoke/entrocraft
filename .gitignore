@@ -12,6 +12,8 @@
 **/*.pt
 **/*.parquet
 **/*.safetensors
+**/*.json
+**/*.jsonl
 
 **/.cursor/
 
