@@ -3,6 +3,8 @@
 This repository contains RL training scripts built on top of `verl`, with
 examples for Entrocraft training.
 
+[![Entrocraft overview](overview.png)](overview.pdf)
+
 ## Environment Setup
 
 Create and activate the environment expected by the training scripts.
@@ -97,4 +99,17 @@ The main outputs are written under:
 checkpoints/<project_name>/qwen3-4b-base_numina_math_grpo_range_linear_n8
 logs/slurm-<job_id>.out
 logs/slurm-<job_id>.err
+```
+
+## Citation
+
+If you find Entrocraft useful, please cite:
+
+```bibtex
+@article{li2026addressing,
+  title={Addressing Performance Saturation for LLM RL via Precise Entropy Curve Control},
+  author={Li, Bolian and Wang, Yifan and Ding, Yi and Lochab, Anamika and Grama, Ananth and Zhang, Ruqi},
+  journal={arXiv preprint arXiv:2604.26326},
+  year={2026}
+}
 ```
