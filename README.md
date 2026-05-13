@@ -19,15 +19,6 @@ The installation script clones `verl`, installs the vLLM/SGLang stack, installs
 `verl` in editable mode, and installs the additional Python packages used by
 the math data and reward pipeline.
 
-On a Slurm cluster, the training scripts assume CUDA and Conda modules are
-available:
-
-```bash
-module load cuda/12.6.0
-module load conda/2024.09
-conda activate verl
-```
-
 Before submitting a Slurm job, replace the release placeholders in the script:
 
 ```bash
@@ -41,7 +32,7 @@ Use a cluster allocation for `<SLURM_ACCOUNT>`, an email address for
 
 ## Data Preparation
 
-Generate the Numina Math training parquet with:
+Generate the Numina-Math training parquet with:
 
 ```bash
 python scripts/data_preprocess/numina_math_100k.py \
@@ -67,7 +58,7 @@ data/aime25/test.parquet
 data/aime26/test.parquet
 ```
 
-## Running GRPO + EntroCraft
+## Running GRPO + Entrocraft
 
 Use the range-linear GRPO script as the reference Entrocraft run:
 
